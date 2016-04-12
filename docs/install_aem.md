@@ -53,4 +53,4 @@ AEM will take a few minutes to unpack the jar file, install itself, and start up
 
 To access the instance point your browser to:
 
-http://localhost:4502
+[http://localhost:4502](http://localhost:4502)
