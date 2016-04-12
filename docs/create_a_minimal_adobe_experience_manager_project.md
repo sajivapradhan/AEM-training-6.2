@@ -21,4 +21,4 @@ mvn archetype:generate \
 -DsiteName="Perficient Digital Site" -batch-mode
 ```
 
-This will create an AEM Project based on the AEM Project Archetype.
+This will create an AEM Project based on the AEM Project Archetype.  The Project will be named "Perficient Digital".  The Java classes will be within the "com.perficient.adobe.digital.core" package.  The content and application content packages will be installed within a folder named "digital".
