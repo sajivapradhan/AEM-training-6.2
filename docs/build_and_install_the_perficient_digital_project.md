@@ -36,3 +36,5 @@
 4. Verify the bundle and content packages were installed correctly by navigating to [http://localhost:4502/content/digital/en.html] (http://localhost:4502/content/digital/en.html).
 
   You should see a page looking similar to the following screenshot:
+
+  ![alt text](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/screencapture-localhost-4502-content-digital-en-html-1460476081939.png?token=ABVpFTgfwOgV58AfCTR-TppvITQQOIGJks5XFlQRwA%3D%3D "screenshot")
