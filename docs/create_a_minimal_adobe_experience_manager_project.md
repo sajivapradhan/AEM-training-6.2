@@ -12,11 +12,13 @@ mvn archetype:generate \
 -DartifactId=digital \
 -Dversion=1.0-SNAPSHOT \
 -Dpackage=com.perficient.adobe.digital \
--DappsFolderName=perficientdigital \
+-DappsFolderName=digital \
 -DartifactName="Perficient Digital" \
 -DcomponentGroupName="Perficient Digital Components" \
--DcontentFolderName=perficientdigital \
+-DcontentFolderName=digital \
 -DcssId=digital \
 -DpackageGroup="Perficient Digital Content Package" \
 -DsiteName="Perficient Digital Site" -batch-mode
 ```
+
+This will create an AEM Project based on the AEM Project Archetype.
