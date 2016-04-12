@@ -10,3 +10,4 @@ This tutorial enables you to create a fully featured website with Adobe Experien
 2. [Install Git] (docs/install_git.md)
 3. [Install AEM] (docs/install_aem.md)
 4. [Install AEM project archetype] (docs/install_aem_project_archetype.md)
+5. [Create a minimal Adobe Experience Manager project]  (docs/create_a_minimal_adobe_experience_manager_project.md)
