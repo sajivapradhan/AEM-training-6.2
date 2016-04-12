@@ -7,3 +7,4 @@ This tutorial enables you to create a fully featured website with Adobe Experien
 ## Outline
 
 1. [Install Maven] (docs/install_maven.md)
+2. [Install Git] (docs/install_git.md)
