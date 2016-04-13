@@ -2,7 +2,7 @@
 
 The AEM Project Archetype provides an excellent starting point when developing our own projects.  The sample code demonstrates many of the features (such as Sightly and Sling Models) introduced in AEM 6.0.  It is worth review the code and configurations.  For more information about archetype see the Git Hub page [https://github.com/Adobe-Marketing-Cloud/aem-project-archetype] (https://github.com/Adobe-Marketing-Cloud/aem-project-archetype).
 
-For the purposes of this tutorial, we will remove much of the auto-generated code.  We will be adding some of the code back in as the tutorial progresses.  We will also be creating all new code to meet our particular use-case, an implementation of the Perficient Digital design.
+For the purposes of this tutorial, we will remove much of the auto-generated code.  We will be adding some of the code back in as the tutorial progresses.  We will also be creating all new code to meet our particular use-case, an implementation of the Perficient Digital design.  Make a backup copy of the digital folder you created via the archetype.  We will be modifying the original and we will need to reference the original from time to time.
 
 ## Remove Site Content
 
