@@ -107,3 +107,5 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
   ./ui.apps/src/main/content/META-INF/vault/filter.xml
   ./ui.apps/src/test
   ```
+
+  Source code can be downloaded here: https://github.com/PRFTAdobe/AEMTraining/raw/master/src/Remove%20auto-generated%20code%20from%20Perficient%20Digital%20Project/digital.zip
