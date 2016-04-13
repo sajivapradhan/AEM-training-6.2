@@ -4,7 +4,7 @@ The AEM Project Archetype provides an excellent starting point when developing o
 
 For the purposes of this tutorial, we will remove much of the auto-generated code.  We will be adding some of the code back in as the tutorial progresses.  We will also be creating all new code to meet our particular use-case, an implementation of the Perficient Digital design.
 
-# Remove Site Content
+## Remove Site Content
 
 1. Open CRXDE Lite in your browser.
   [http://localhost:4502/crx/de](http://localhost:4502/crx/de/index.jsp)
@@ -14,4 +14,4 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
    ![alt text](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-13%20at%2012.23.00%20PM.png?token=ABVpFagzV_5n8xTdgwrBKnG3W0H8DcJzks5XF620wA%3D%3D "screenshot")
 4. Click the "Save All" button.
 
-#
+## Remove Local Content
