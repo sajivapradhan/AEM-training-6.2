@@ -30,15 +30,27 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
 5. From within the ```core``` project, remove everything under the following directory ```./src/test/java/com/perficient/adobe/digital/core```.
 6. From within the ```ui.apps``` project, remove everything under the following directories:
  ```./src/main/content/jcr_root/apps/digital/components/content```
- ```./src/main/content/jcr_root/etc/designs/digital/```
+
+ ```./src/main/content/jcr_root/etc/designs/digital```
+
  ```./src/main/content/jcr_root/apps/digital/tests```
+
 7. From within the ```ui.apps``` project, remove the following directories:
+
  ```./src/main/content/jcr_root/apps/digital/i18n```
+
  ```./src/main/content/jcr_root/apps/digital/config```
+
  ```./src/main/content/jcr_root/apps/digital/config.author```
+
  ```./src/main/content/jcr_root/apps/digital/components/structure/logo```
+
  ```./src/main/content/jcr_root/apps/digital/components/structure/page```
+
  ```./src/main/content/jcr_root/apps/digital/components/structure/topnav```
+
  ```./src/main/content/jcr_root/apps/digital/templates/page-content```
+
  ```./src/main/content/jcr_root/apps/digital/templates/page-home```
+
 7. Run ```mvn clean``` to clean your project.
