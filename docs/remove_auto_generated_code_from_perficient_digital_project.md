@@ -84,8 +84,10 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
   ./ui.apps/src/main/content/jcr_root/apps/.content.xml
   ./ui.apps/src/main/content/jcr_root/apps/digital
   ./ui.apps/src/main/content/jcr_root/apps/digital/components
+  ./ui.apps/src/main/content/jcr_root/apps/digital/components/content
   ./ui.apps/src/main/content/jcr_root/apps/digital/components/structure
   ./ui.apps/src/main/content/jcr_root/apps/digital/templates
+  ./ui.apps/src/main/content/jcr_root/apps/digital/tests
   ./ui.apps/src/main/content/jcr_root/apps/sling
   ./ui.apps/src/main/content/jcr_root/apps/sling/servlet
   ./ui.apps/src/main/content/jcr_root/apps/sling/servlet/errorhandler
@@ -93,6 +95,7 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
   ./ui.apps/src/main/content/jcr_root/apps/sling/servlet/errorhandler/ResponseStatus.java
   ./ui.apps/src/main/content/jcr_root/etc
   ./ui.apps/src/main/content/jcr_root/etc/designs
+  ./ui.apps/src/main/content/jcr_root/etc/designs/digital
   ./ui.apps/src/main/content/jcr_root/META-INF
   ./ui.apps/src/main/content/jcr_root/META-INF/MANIFEST.MF
   ./ui.apps/src/main/content/jcr_root/WEB-INF
@@ -102,7 +105,5 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
   ./ui.apps/src/main/content/META-INF/vault
   ./ui.apps/src/main/content/META-INF/vault/config.xml
   ./ui.apps/src/main/content/META-INF/vault/filter.xml
-  ./ui.apps/src/main/java
   ./ui.apps/src/test
-  ./ui.apps/src/test/java
   ```
