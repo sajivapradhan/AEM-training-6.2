@@ -50,3 +50,59 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
  ```
 
 7. Run ```mvn clean``` to clean your project.
+8. Your directory structure should resemble the following:
+
+  ```
+  ./core
+  ./core/.classpath
+  ./core/pom.xml
+  ./core/src
+  ./core/src/main
+  ./core/src/main/java
+  ./core/src/main/java/com
+  ./core/src/main/java/com/perficient
+  ./core/src/main/java/com/perficient/adobe
+  ./core/src/main/java/com/perficient/adobe/digital
+  ./core/src/main/java/com/perficient/adobe/digital/core
+  ./core/src/test
+  ./core/src/test/java
+  ./core/src/test/java/com
+  ./core/src/test/java/com/perficient
+  ./core/src/test/java/com/perficient/adobe
+  ./core/src/test/java/com/perficient/adobe/digital
+  ./core/src/test/java/com/perficient/adobe/digital/core
+  ./pom.xml
+  ./README.md
+  ./ui.apps
+  ./ui.apps/.classpath
+  ./ui.apps/pom.xml
+  ./ui.apps/src
+  ./ui.apps/src/main
+  ./ui.apps/src/main/content
+  ./ui.apps/src/main/content/jcr_root
+  ./ui.apps/src/main/content/jcr_root/apps
+  ./ui.apps/src/main/content/jcr_root/apps/.content.xml
+  ./ui.apps/src/main/content/jcr_root/apps/digital
+  ./ui.apps/src/main/content/jcr_root/apps/digital/components
+  ./ui.apps/src/main/content/jcr_root/apps/digital/components/structure
+  ./ui.apps/src/main/content/jcr_root/apps/digital/templates
+  ./ui.apps/src/main/content/jcr_root/apps/sling
+  ./ui.apps/src/main/content/jcr_root/apps/sling/servlet
+  ./ui.apps/src/main/content/jcr_root/apps/sling/servlet/errorhandler
+  ./ui.apps/src/main/content/jcr_root/apps/sling/servlet/errorhandler/404.html
+  ./ui.apps/src/main/content/jcr_root/apps/sling/servlet/errorhandler/ResponseStatus.java
+  ./ui.apps/src/main/content/jcr_root/etc
+  ./ui.apps/src/main/content/jcr_root/etc/designs
+  ./ui.apps/src/main/content/jcr_root/META-INF
+  ./ui.apps/src/main/content/jcr_root/META-INF/MANIFEST.MF
+  ./ui.apps/src/main/content/jcr_root/WEB-INF
+  ./ui.apps/src/main/content/jcr_root/WEB-INF/lib
+  ./ui.apps/src/main/content/jcr_root/WEB-INF/web.xml
+  ./ui.apps/src/main/content/META-INF
+  ./ui.apps/src/main/content/META-INF/vault
+  ./ui.apps/src/main/content/META-INF/vault/config.xml
+  ./ui.apps/src/main/content/META-INF/vault/filter.xml
+  ./ui.apps/src/main/java
+  ./ui.apps/src/test
+  ./ui.apps/src/test/java
+  ```
