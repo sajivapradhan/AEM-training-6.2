@@ -10,5 +10,8 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
   [http://localhost:4502/crx/de](http://localhost:4502/crx/de/index.jsp)
 2. Click on the button containing the text "anonymous@crx.default" and login to the application using the default credentials admin/admin.
 3. Navigate to /content/digital and press the "Delete" button.
+
    ![alt text](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-13%20at%2012.23.00%20PM.png?token=ABVpFagzV_5n8xTdgwrBKnG3W0H8DcJzks5XF620wA%3D%3D "screenshot")
 4. Click the "Save All" button.
+
+#
