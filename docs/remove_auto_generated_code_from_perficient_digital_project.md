@@ -50,7 +50,7 @@ For the purposes of this tutorial, we will remove much of the auto-generated cod
  ```
 
 7. Run ```mvn clean``` to clean your project.
-8. Your directory structure should resemble the following:
+8. Your directory listing should resemble the following:
 
   ```
   ./core
