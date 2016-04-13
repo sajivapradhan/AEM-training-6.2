@@ -23,4 +23,4 @@ mvn archetype:generate \
 
 This will create an AEM Project based on the AEM Project Archetype.  The Project will be named "Perficient Digital".  The Java classes will be within the "com.perficient.adobe.digital.core" package.  The content and application content packages will be installed within a folder named "digital".
 
-Source code can be downloaded here: https://github.com/PRFTAdobe/AEMTraining/raw/master/src/Create%20a%20minimal%20Adobe%20Experience%20Manager%20project/digital.zip
+Source code can be downloaded [here] (https://github.com/PRFTAdobe/AEMTraining/raw/master/src/Create%20a%20minimal%20Adobe%20Experience%20Manager%20project/digital.zip).
