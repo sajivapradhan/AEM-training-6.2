@@ -13,4 +13,4 @@ This tutorial enables you to create a fully featured website with Adobe Experien
 5. [Create a minimal Adobe Experience Manager project]  (docs/create_a_minimal_adobe_experience_manager_project.md)
 6. [Build and Install the Perficient Digital Project] (docs/build_and_install_the_perficient_digital_project.md)
 7. [Remove auto-generated code from Perficient Digital Project] (docs/remove_auto_generated_code_from_perficient_digital_project.md)
-8. [Import Perficient Digital Project into an IDE] (docs/import perficient digital project into an ide.md)
+8. [Import Perficient Digital Project into an IDE] (docs/import_perficient_digital_project_into_an_ide.md)
