@@ -120,3 +120,51 @@
   ```
   <script src="/etc/designs/digital/clientlib/js/vendor/modernizr-2.8.3.min.js"></script>
   ```
+
+24. Copy `main.js` and `plugins.js` from the js folder within the Boilerplate archive into the js folder under clientlib.
+25. Copy `main.css` and `normalize.css` from the css folder within the Boilerplate archive into the css folder under clientlib.
+26. Edit js.txt to include the following:
+
+  ```
+  #base=js
+  plugins.js
+  main.jss
+  ```
+
+27. Edit css.txt to include the following:
+
+  ```
+  #base=css
+  normalize.css
+  main.css
+  ```
+
+28.  Replace the js references within page-default.html with the following code:
+
+  Replace
+
+  ```
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  ```
+
+  with
+
+  ```
+  <script data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.js @ categories='digital'}" data-sly-unwrap></script>
+  ```
+
+29.  Replace the stylesheet references within page-default.html with the following code:
+
+  Replace
+
+  ```
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  ```
+
+  with
+
+  ```
+  <link rel='stylesheet' data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.css @ categories='digital'}" data-sly-unwrap />
+  ```
