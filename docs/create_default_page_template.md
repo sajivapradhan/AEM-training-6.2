@@ -52,7 +52,9 @@
 10. Copy the contents of index.html from the Boilerplate archive into page-default.html.
 11. Remove the analytics code.
 12. Navigate to the digital directory under designs:
+
   ```
   cd ./src/main/content/jcr_root/etc/designs/digital/
   ```
+  
 13.  
