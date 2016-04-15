@@ -60,15 +60,61 @@
 13. Create a node definition file within "digital" named ".content.xml".
 14. Set the contents of the file to the following:
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="cq:Page">
-    <jcr:content
-        jcr:primaryType="nt:unstructured"
-        jcr:title="Perficient Digital Design"
-        sling:resourceType="wcm/core/components/designer">
-    </jcr:content>
-</jcr:root>
-```
-> Setting the Resource Type to "wcm/core/components/deigner" delegates this directory and the contents within it as responsible for the "design" of the site (js, css, images, and etc ...)
+  ```
+  <?xml version="1.0" encoding="UTF-8"?>
+  <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+      jcr:primaryType="cq:Page">
+      <jcr:content
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Perficient Digital Design"
+          sling:resourceType="wcm/core/components/designer">
+      </jcr:content>
+  </jcr:root>
+  ```
+  > Setting the Resource Type to "wcm/core/components/deigner" delegates this directory and the contents within it as responsible for the "design" of the site (js, css, images, and etc ...)
+
+15. Create a folder named "clientlib" under /etc/designs/digital.
+16. Create a node definition file within "clientlib" named ".content.xml".
+17. Set the contents of the file to the following:
+
+  ```
+  <?xml version="1.0" encoding="UTF-8"?>
+  <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+      jcr:primaryType="cq:ClientLibraryFolder"
+      categories="[digital]"/>
+  ```
+
+  > Setting the Primary Type to "cq:ClientLibraryFolder" designates the "clientlib" directory as a Client-side Library Folder, which allow you to store the client-side code in the repository, organize it into categories, and define when and how each category of code is to be served to the client.
+
+18. Create the following folders under clientlib: js, css, and img.
+19. Create the following files under clientlib: js.txt and css.txt.
+20. Create a folder under the clientlib/js named "vendor".
+21. Copy `jquery-1.12.0.min.js` and `modernizr-2.8.3.min.js` from the js/vendor folder within the Boilerplate archive into the newly created vendor directory.
+22. Replace the jQuery references within page-default.html with the following code:
+  Replace
+
+  ```
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+      window.jQuery||document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+    </script>
+  ```
+
+  with
+
+  ```
+    <script src="/etc/designs/digital/clientlib/js/vendor/jquery-1.12.0.min.js"></script>
+  ```
+
+23. Replace the Modernizr reference within page-default.html with the following code:
+  Replace
+
+  ```
+  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  ```
+
+  with
+
+  ```
+  <script src="/etc/designs/digital/clientlib/js/vendor/modernizr-2.8.3.min.js"></script>
+  ```
