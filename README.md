@@ -15,3 +15,4 @@ This tutorial enables you to create a fully featured website with Adobe Experien
 7. [Remove auto-generated code from Perficient Digital Project] (docs/remove_auto_generated_code_from_perficient_digital_project.md)
 8. [Import Perficient Digital Project into an IDE] (docs/import_perficient_digital_project_into_an_ide.md)
 9. [Download HTML5 Boilerplate Code] (docs/download_html5_boilerplate_code.md)
+10. [Create Default Page Template] (docs/create_default_page_template.md)
