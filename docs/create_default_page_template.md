@@ -1,4 +1,4 @@
-# Create Default Page Template
+#  
 
 1. From within the ui.apps project within digital, navigate to the templates directory:
     ```
@@ -22,10 +22,10 @@
       </jcr:content>
   </jcr:root>
   ```
-### The Anatomy of a template
+> ** The Anatomy of a template **
 
-1. Description: The description that is assigned to the template.
-2. Primary Type: Sets the Node to be of type "cq:Template".
-3. Title: The title that is assigned to the template.
-4. Allowed Paths: /content(/.\*)? means that we can access our template, anywhere placed inside content folder
-5. Ranking: The order (ascending) in which this template will appear in relation to other templates. Setting this value to 1 ensures that the template appears first in the list.
+> - **Description**: The description that is assigned to the template.
+> - **Primary Type**: Sets the Node to be of type "cq:Template".
+> - **Title**: The title that is assigned to the template.
+> - **Allowed Paths**: /content(/.\*)? means that we can access our template, anywhere placed inside content folder
+> - **Ranking**: The order (ascending) in which this template will appear in relation to other templates. Setting this value to 1 ensures that the template appears first in the list.
