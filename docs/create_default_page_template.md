@@ -22,8 +22,8 @@
       </jcr:content>
   </jcr:root>
   ```
-> ** The Anatomy of a template **
 
+> ** The Anatomy of a template **
 > - **Description**: The description that is assigned to the template.
 > - **Primary Type**: Sets the Node to be of type "cq:Template".
 > - **Title**: The title that is assigned to the template.
