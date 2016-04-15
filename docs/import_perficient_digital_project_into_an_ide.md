@@ -28,7 +28,7 @@
 
 8. On the next page of the wizard, specify the new project name and location of the project files. Click Finish.
 
-## Install the AEM Developer Tools for Eclipse
+## Install AEM Developer Tools for Eclipse
 
 1. Browse the [AEM Developer Tools Web Site] (https://eclipse.adobe.com/aem/dev-tools/).
 
@@ -55,3 +55,33 @@
 12. Accept the license agreements and click Finish.
 
 13. Click Yes in order to restart Eclipse.
+
+## Enable Remote Debugging within AEM
+
+1. With your favorite Text Editor, open <aem-install>/cq-quickstart/bin/start if your are on a Unix-based Operating System (Linux, Solaris and Mac OS X) or <aem-install>/cq-quickstart/bin/start.bat if you are on Windows.
+
+2. Add "-agentlib:jdwp=transport=dt_socket,address=2979,server=y,suspend=n" after "java $CQ_JVM_OPTS" and before "-jar $CURR_DIR/$CQ_JARFILE" if your are on a Unix-based Operating System (Linux, Solaris and Mac OS X).  Add "-agentlib:jdwp=transport=dt_socket,address=2979,server=y,suspend=n" after "java %CQ_JVM_OPTS%" and before "-jar %CurrDirName%\%CQ_JARFILE%" if you are on Windows.
+
+3.  You will start AEM with the start or start.bat batch files instead of the cq-quickstart jar.
+
+## Define a new AEM Server from within Eclipse
+
+1. Choose File -> New -> Other -> Server.
+
+2. Select "Adobe Experience Manager" as the server type and click Next.
+
+3. Click Finish.
+
+4. Switch to the Java EE workspace within Eclipse.
+
+5. Click on the Servers tab.
+
+6. Double-click on "Adobe Experience Manager at localhost".
+
+7. Change the Port to 4502 and the Debug Port to 2979.
+
+8. Save your changes.
+
+## Install AEM Developer Tools for IntelliJ
+
+AEM Developer Tools for IntelliJ is still in Beta.  Download the Plugin here: https://github.com/headwirecom/aem-ide-tooling-4-intellij and follow the instructions here: https://github.com/headwirecom/aem-ide-tooling-4-intellij/blob/master/documenation/AEM%20Tooling%20Plugin%20for%20IntelliJ%20IDEA.md.  Use 2979 for the Debug Port. 
