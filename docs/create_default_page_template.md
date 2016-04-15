@@ -91,6 +91,7 @@
 20. Create a folder under the clientlib/js named "vendor".
 21. Copy `jquery-1.12.0.min.js` and `modernizr-2.8.3.min.js` from the js/vendor folder within the Boilerplate archive into the newly created vendor directory.
 22. Replace the jQuery references within page-default.html with the following code:
+
   Replace
 
   ```
@@ -107,6 +108,7 @@
   ```
 
 23. Replace the Modernizr reference within page-default.html with the following code:
+
   Replace
 
   ```
