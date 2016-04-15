@@ -84,4 +84,4 @@
 
 ## Install AEM Developer Tools for IntelliJ
 
-AEM Developer Tools for IntelliJ is still in Beta.  Download the Plugin here: https://github.com/headwirecom/aem-ide-tooling-4-intellij and follow the instructions here: https://github.com/headwirecom/aem-ide-tooling-4-intellij/blob/master/documenation/AEM%20Tooling%20Plugin%20for%20IntelliJ%20IDEA.md.  Use 2979 for the Debug Port. 
+AEM Developer Tools for IntelliJ is still in Beta.  Download the Plugin here: https://github.com/headwirecom/aem-ide-tooling-4-intellij/wiki and follow the instructions here: https://github.com/headwirecom/aem-ide-tooling-4-intellij/blob/master/documenation/AEM%20Tooling%20Plugin%20for%20IntelliJ%20IDEA.md.  Use 2979 for the Debug Port. 
