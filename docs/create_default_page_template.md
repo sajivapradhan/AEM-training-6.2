@@ -1,4 +1,4 @@
-#  
+# Create Default Page Template
 
 1. From within the ui.apps project within digital, navigate to the templates directory:
     ```
