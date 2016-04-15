@@ -23,13 +23,13 @@
   </jcr:root>
   ```
 
-> **The Anatomy of a template**
-> - **Description**: The description that is assigned to the template.
-> - **Primary Type**: Sets the Node to be of type "cq:Template".
-> - **Title**: The title that is assigned to the template.
-> - **Allowed Paths**: /content(/.\*)? means that we can access our template, anywhere placed inside content folder
-> - **Ranking**: The order (ascending) in which this template will appear in relation to other templates. Setting this value to 1 ensures that the template appears first in the list.
-> - **Resource Type**: The component referenced by our template.
+  > **The Anatomy of a template**
+  > - **Description**: The description that is assigned to the template.
+  > - **Primary Type**: Sets the Node to be of type "cq:Template".
+  > - **Title**: The title that is assigned to the template.
+  > - **Allowed Paths**: /content(/.\*)? means that we can access our template, anywhere placed inside content folder
+  > - **Ranking**: The order (ascending) in which this template will appear in relation to other templates. Setting this value to 1 ensures that the template appears first in the list.
+  > - **Resource Type**: The component referenced by our template.
 
 5. Navigate to the structure directory:
   ```
@@ -47,4 +47,4 @@
       sling:resourceSuperType="foundation/components/page"
       componentGroup=".hidden"/>
   ```
-9. 
+9.
