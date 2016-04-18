@@ -172,6 +172,6 @@
 30. Create favicon folder within `clientlib/img` directory.
 31. Right-click on the following image and save it to you computer.
 
-  ![alt text](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png "logo")
+  ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
 
-32. 
+32.
