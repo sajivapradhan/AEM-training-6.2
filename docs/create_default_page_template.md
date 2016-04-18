@@ -168,3 +168,10 @@
   ```
   <link rel='stylesheet' data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.css @ categories='digital'}" data-sly-unwrap />
   ```
+
+30. Create favicon folder within `clientlib/img` directory.
+31. Right-click on the following image and save it to you computer.
+
+  ![alt text](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png "logo")
+
+32. 
