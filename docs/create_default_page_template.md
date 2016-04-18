@@ -221,8 +221,8 @@
 
 38.  Click on "Websites" folder icon in the Left Navigation Panel.  Click New -> New Page.  Enter "Digital" as the Title.  Ensure "Perficient Digital Default Template" is selected and click "Create".
 
-  ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
+  ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.25.59%20AM.png?token=ABVpFVrovIaYL8JZ1WLU61p3SwJydQjEks5XHizewA%3D%3D "Screenshot")
 
 39. Open the following URL in your browser: `http://localhost:4502/content/digital.html`.  The webpage should resemble the following image:
 
-  ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
+  ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.40.25%20AM.png?token=ABVpFUNR5FymwfHyAUkilmvMLmBhmyf0ks5XHi0NwA%3D%3D "Screenshot")
