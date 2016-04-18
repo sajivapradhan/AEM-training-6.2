@@ -81,30 +81,24 @@
   <?xml version="1.0" encoding="UTF-8"?>
   <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
       jcr:primaryType="cq:ClientLibraryFolder"
-      categories="[digital]"/>
+      categories="[digital]"      
+      dependencies="[cq.jquery]/>
   ```
 
-  > Setting the Primary Type to "cq:ClientLibraryFolder" designates the "clientlib" directory as a Client-side Library Folder, which allow you to store the client-side code in the repository, organize it into categories, and define when and how each category of code is to be served to the client.
+  > Setting the Primary Type to "cq:ClientLibraryFolder" designates the "clientlib" directory as a Client-side Library Folder, which allow you to store the client-side code in the repository, organize it into categories, and define when and how each category of code is to be served to the client.  The “clientlib” functionality will manage all your Javascript and CSS resources in your application. It takes cares of dependency management, merging files and minifying content.
 
 18. Create the following folders under clientlib: js, css, and img.
 19. Create the following files under clientlib: js.txt and css.txt.
 20. Create a folder under the clientlib/js named "vendor".
-21. Copy `jquery-1.12.0.min.js` and `modernizr-2.8.3.min.js` from the js/vendor folder within the Boilerplate archive into the newly created vendor directory.
-22. Replace the jQuery references within page-default.html with the following code:
+21. Copy `modernizr-2.8.3.min.js` from the js/vendor folder within the Boilerplate archive into the newly created vendor directory.
+22. Delete the jQuery references within page-default.html.  The property `dependencies="[cq.jquery]` in the node definition file informs AEM of the dependency upon jQuery.  AEM will handle the insertion of the jQuery library within the code.
 
-  Replace
+  Remove
 
   ```
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
       window.jQuery||document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
     </script>
-  ```
-
-  with
-
-  ```
-    <script src="/etc/designs/digital/clientlib/js/vendor/jquery-1.12.0.min.js"></script>
   ```
 
 23. Replace the Modernizr reference within page-default.html with the following code:
@@ -139,7 +133,7 @@
   main.css
   ```
 
-28.  Replace the js references within page-default.html with the following code:
+28.  Replace the js references within page-default.html with the following code.  We will use Sightly's data-sly-call attribute to invoke the JavaScript clientlib.
 
   Replace
 
@@ -154,7 +148,7 @@
   <script data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.js @ categories='digital'}" data-sly-unwrap></script>
   ```
 
-29.  Replace the stylesheet references within page-default.html with the following code:
+29.  Replace the stylesheet references within page-default.html with the following code.  We will use Sightly's data-sly-call attribute to invoke the Stylesheet clientlib.
 
   Replace
 
@@ -213,18 +207,28 @@
   <meta name="theme-color" content="#ffffff">
   ```
 
-36.  From the root of the digital project run the following maven command:
+36. Open the following URL in your browser: `http://localhost:4502/system/console/configMgr`.
+
+37. Edit the "Day CQ HTML Library Manager" configuration and check the Minify and Gzip options.  Save the configuration.
+
+38.  From the root of the digital project run the following maven command:
 
   ```
   mvn clean install -PautoInstallBundle -PautoInstallPackage
   ```
 
-37.  Open the following URL in your browser: `http://localhost:4502/siteadmin`.
+39.  Open the following URL in your browser: `http://localhost:4502/siteadmin`.
 
-38.  Click on "Websites" folder icon in the Left Navigation Panel.  Click New -> New Page.  Enter "Digital" as the Title.  Ensure "Perficient Digital Default Template" is selected and click "Create".
+40.  Click on "Websites" folder icon in the Left Navigation Panel.  Click New -> New Page.  Enter "Digital" as the Title.  Ensure "Perficient Digital Default Template" is selected and click "Create".
 
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.25.59%20AM.png?token=ABVpFVrovIaYL8JZ1WLU61p3SwJydQjEks5XHizewA%3D%3D "Screenshot")
 
-39. Open the following URL in your browser: `http://localhost:4502/content/digital.html`.  The webpage should resemble the following image:
+41. Open the following URL in your browser: `http://localhost:4502/content/digital.html`.  The webpage should resemble the following image:
 
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.40.25%20AM.png?token=ABVpFUNR5FymwfHyAUkilmvMLmBhmyf0ks5XHi0NwA%3D%3D "Screenshot")
+
+  You will notice the favicon displayed in the tab within your browser.
+
+42.  View the source of the page.  AEM has inserted references to the jQuery library within your code.  You will also see that AEM has combined and minified your CSS & JS files.
+
+  See http://localhost:4502/etc/designs/digital/clientlib.min.js and http://localhost:4502/etc/designs/digital/clientlib.min.css
