@@ -232,3 +232,5 @@
 42.  View the source of the page.  AEM has inserted references to the jQuery library within your code.  You will also see that AEM has combined and minified your CSS & JS files.
 
   See [http://localhost:4502/etc/designs/digital/clientlib.min.js] (http://localhost:4502/etc/designs/digital/clientlib.min.js) and [http://localhost:4502/etc/designs/digital/clientlib.min.css] (http://localhost:4502/etc/designs/digital/clientlib.min.css)
+
+Source code can be downloaded [here] (https://github.com/PRFTAdobe/AEMTraining/raw/master/src/Create%20Default%20Page%20Template/digital.zip).
