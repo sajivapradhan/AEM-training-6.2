@@ -207,7 +207,7 @@
   <meta name="theme-color" content="#ffffff">
   ```
 
-36. Open the following URL in your browser: `http://localhost:4502/system/console/configMgr`.
+36. Open the following URL in your browser: [http://localhost:4502/system/console/configMgr] (http://localhost:4502/system/console/configMgr).
 
 37. Edit the "Day CQ HTML Library Manager" configuration and check the Minify and Gzip options.  Save the configuration.
 
@@ -217,13 +217,13 @@
   mvn clean install -PautoInstallBundle -PautoInstallPackage
   ```
 
-39.  Open the following URL in your browser: `http://localhost:4502/siteadmin`.
+39.  Open the following URL in your browser: [http://localhost:4502/siteadmin] (http://localhost:4502/siteadmin).
 
 40.  Click on "Websites" folder icon in the Left Navigation Panel.  Click New -> New Page.  Enter "Digital" as the Title.  Ensure "Perficient Digital Default Template" is selected and click "Create".
 
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.25.59%20AM.png?token=ABVpFVrovIaYL8JZ1WLU61p3SwJydQjEks5XHizewA%3D%3D "Screenshot")
 
-41. Open the following URL in your browser: `http://localhost:4502/content/digital.html`.  The webpage should resemble the following image:
+41. Open the following URL in your browser: [http://localhost:4502/content/digital.html] (http://localhost:4502/content/digital.html).  The webpage should resemble the following image:
 
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.40.25%20AM.png?token=ABVpFUNR5FymwfHyAUkilmvMLmBhmyf0ks5XHi0NwA%3D%3D "Screenshot")
 
@@ -231,4 +231,4 @@
 
 42.  View the source of the page.  AEM has inserted references to the jQuery library within your code.  You will also see that AEM has combined and minified your CSS & JS files.
 
-  See http://localhost:4502/etc/designs/digital/clientlib.min.js and http://localhost:4502/etc/designs/digital/clientlib.min.css
+  See [http://localhost:4502/etc/designs/digital/clientlib.min.js] (http://localhost:4502/etc/designs/digital/clientlib.min.js) and [http://localhost:4502/etc/designs/digital/clientlib.min.css] (http://localhost:4502/etc/designs/digital/clientlib.min.css)
