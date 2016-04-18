@@ -174,4 +174,55 @@
 
   ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
 
-32.
+32. Open the following URL in your browser: http://www.favicon-generator.org/.  Choose the image you just downloaded and click "Create Favicon".
+
+33. Download the generated favicon.
+
+34. Copy the contents of the favicon archive to the favicon folder you created above.
+
+35. Replace the favicon references within page-default.html with the following code:
+
+  Replace
+
+  ```
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  ```
+
+  with
+
+  ```
+  <link rel="apple-touch-icon" sizes="57x57" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/etc/designs/digital/clientlib/img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/etc/designs/digital/clientlib/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/etc/designs/digital/clientlib/img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/etc/designs/digital/clientlib/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/etc/designs/digital/clientlib/img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/etc/designs/digital/clientlib/img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  ```
+
+36.  From the root of the digital project run the following maven command:
+
+  ```
+  mvn clean install -PautoInstallBundle -PautoInstallPackage
+  ```
+
+37.  Open the following URL in your browser: `http://localhost:4502/siteadmin`.
+
+38.  Click on "Websites" folder icon in the Left Navigation Panel.  Click New -> New Page.  Enter "Digital" as the Title.  Ensure "Perficient Digital Default Template" is selected and click "Create".
+
+  ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
+
+39. Open the following URL in your browser: `http://localhost:4502/content/digital.html`.  The webpage should resemble the following image:
+
+  ![Perficient Logo](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/PerficientLogo.png?token=ABVpFQRkeiXGG99AiNpDQNL7tU8IrEkpks5XHiJTwA%3D%3D "logo")
