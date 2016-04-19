@@ -4,6 +4,9 @@
 
 This tutorial enables you to create a fully featured website with Adobe Experience Manager (AEM).  The end result of this tutorial is a functional website implementing the Perficient Digital design.
 
+## Checking out
+Sources for exercises can be found as branches to this project.  In order to checkout the proper branch, clone the repository locally with ```git clone https://github.com/PRFTAdobe/AEMTraining.git```. Once cloned, you can view the available branches with ```git branch -a```.  Finally, you can checkout the branch in question, for example: ```git checkout Minimal-AEM-Project```. To ensure you have the latest, also do a ```git pull```
+
 ## Outline
 
 1. [Install Maven] (docs/install_maven.md)
