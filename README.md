@@ -1,22 +1,54 @@
-# Perficient, Inc. AEM Training
+# Sample AEM project template
 
-## Introduction
+This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
 
-This tutorial enables you to create a fully featured website with Adobe Experience Manager (AEM).  The end result of this tutorial is a functional website implementing the Perficient Digital design.
+## Modules
 
-## Outline
+The main parts of the template are:
 
-1. [Install Maven] (docs/install_maven.md)
-2. [Install Git] (docs/install_git.md)
-3. [Install AEM] (docs/install_aem.md)
-4. [Install AEM project archetype] (docs/install_aem_project_archetype.md)
-5. [Create a minimal Adobe Experience Manager project]  (docs/create_a_minimal_adobe_experience_manager_project.md)
-6. [Build and Install the Perficient Digital Project] (docs/build_and_install_the_perficient_digital_project.md)
-7. [Remove auto-generated code from Perficient Digital Project] (docs/remove_auto_generated_code_from_perficient_digital_project.md)
-8. [Import Perficient Digital Project into an IDE] (docs/import_perficient_digital_project_into_an_ide.md)
-9. [Download HTML5 Boilerplate Code] (docs/download_html5_boilerplate_code.md)
-10. [Create Default Page Template] (docs/create_default_page_template.md)
-11. [Add Dynamic Content to Default Page Template] (docs/add_dynamic_content_to_default_page_template.md)
+* core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
+* ui.apps: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, templates, runmode specific configs as well as Hobbes-tests
+* ui.content: contains sample content using the components from the ui.apps
+* ui.tests: Java bundle containing JUnit tests that are executed server-side. This bundle is not to be deployed onto production.
+* ui.launcher: contains glue code that deploys the ui.tests bundle (and dependent bundles) to the server and triggers the remote JUnit execution
 
-## Retrieving Exercise Source Files
-Sources for exercises can be found as branches to this project.  In order to checkout the proper branch, clone the repository locally with ```git clone https://github.com/PRFTAdobe/AEMTraining.git```. Once cloned, you can view the available branches with ```git branch -a```.  Finally, you can checkout the branch in question, for example: ```git checkout Minimal-AEM-Project```. To ensure you have the latest, also do a ```git pull```
+## How to build
+
+To build all the modules run in the project root directory the following command with Maven 3:
+
+    mvn clean install
+
+If you have a running AEM instance you can build and package the whole project and deploy into AEM with  
+
+    mvn clean install -PautoInstallPackage
+    
+Or to deploy it to a publish instance, run
+
+    mvn clean install -PautoInstallPackagePublish
+    
+Or to deploy only the bundle to the author, run
+
+    mvn clean install -PautoInstallBundle
+
+## Testing
+
+There are three levels of testing contained in the project:
+
+* unit test in core: this show-cases classic unit testing of the code contained in the bundle. To test, execute:
+
+    mvn clean test
+
+* server-side integration tests: this allows to run unit-like tests in the AEM-environment, ie on the AEM server. To test, execute:
+
+    mvn clean integration-test -PintegrationTests
+
+* client-side Hobbes.js tests: JavaScript-based browser-side tests that verify browser-side behavior. To test:
+
+    in the browser, open the page in 'Developer mode', open the left panel and switch to the 'Tests' tab and find the generated 'MyName Tests' and run them.
+
+
+## Maven settings
+
+The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
+
+    http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
