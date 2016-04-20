@@ -149,6 +149,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
   @Test
   public void testTitleWithPageTitle() throws Exception {		
     pageHelper.activate();
+    assertEquals("Perficient Digital", pageHelper.getPageTitle());
   }
 
   /**
@@ -160,6 +161,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
   @Test
   public void testTitleWithTitle() throws Exception {
     pageHelper.activate();
+		assertEquals("Digital", pageHelper.getPageTitle());
   }
 
   /**
@@ -171,7 +173,124 @@ Let's make our template a little more interesting.  Look at all the possible pag
   @Test
   public void testTitleWithName() throws Exception {
     pageHelper.activate();
+    assertEquals("digital", pageHelper.getPageTitle());
   }
   ```
 
-7. 
+7.  Let's add the method getPageTitle to the PageHelper class.
+
+  ```java
+  /**
+	 * Gets the page title.
+	 *
+	 * @return the page title
+	 */
+	public String getPageTitle() {
+		String pageTitle = currentPage.getName();
+		if (StringUtils.isNotEmpty(currentPage.getTitle())) {
+			pageTitle = currentPage.getTitle();
+		}
+		if (StringUtils.isNotEmpty(currentPage.getPageTitle())) {
+			pageTitle = currentPage.getPageTitle();
+		}
+		return pageTitle;
+	}
+  ```
+
+8. Set `currentPage` in the activate function.
+
+  ```java
+  /** The current page. */
+	  private Page currentPage;
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.adobe.cq.sightly.WCMUsePojo#activate()
+	 */
+	@Override
+	public void activate() throws Exception {
+		currentPage = getCurrentPage();
+	}
+
+  ```
+
+9. Use Mockito to "mock" the responses from AEM.
+
+  ```java
+  /**
+  * Test retrieving the title when the "Page Title" property has been set.
+  *
+  * @throws Exception
+  *             the exception
+  */
+  @Test
+  public void testTitleWithPageTitle() throws Exception {		
+    pageHelper.activate();
+    when(currentPage.getTitle()).thenReturn("Digital");
+    when(currentPage.getPageTitle()).thenReturn("Perficient Digital");
+    assertEquals("Perficient Digital", pageHelper.getPageTitle());
+  }
+
+  /**
+  * Test retrieving the title when the "Title" property has been set and the "Page Title" property has not been set.
+  *
+  * @throws Exception
+  *             the exception
+  */
+  @Test
+  public void testTitleWithTitle() throws Exception {
+    pageHelper.activate();
+		when(currentPage.getTitle()).thenReturn("Digital");
+		assertEquals("Digital", pageHelper.getPageTitle());
+  }
+
+  /**
+   * Test retrieving the title when only the page name is present.
+   *
+   * @throws Exception
+   *             the exception
+   */
+  @Test
+  public void testTitleWithName() throws Exception {
+    pageHelper.activate();
+    assertEquals("digital", pageHelper.getPageTitle());
+  }
+  ```
+
+10.  Run the JUnit tests.  You should not see any failed tests.
+
+11.  "Use" the Sightly Use Class within page-default.html.  Update the HTML tag to include the data-sly-use attribute:
+
+  ```html
+  <html class="no-js" lang="" data-sly-use.pageHelper="com.perficient.adobe.digital.core.sightly.PageHelper">
+  ```
+
+  We are assigning the Sightly Use Class "PageHelper" to the variable pageHelper.
+
+12.  Update the title element and paragraph tag to use this variable.
+
+  ```html
+  <title>${pageHelper.pageTitle}</title>
+  ```
+
+  and
+
+  ```html
+  <p>
+    Welcome to the "${pageHelper.pageTitle}" page!
+  </p>
+  ```
+
+13. Open up your browser to [http://localhost:4502/siteadmin#/content] (http://localhost:4502/siteadmin#/content).
+
+14. Right-click on the "Digital" page and click on "Properties".  Expand "More Titles and Description".  Set "Page Title" to "Perficient Digital" and click OK.
+
+15.  At the root of digital, type the following in a terminal or in a command prompt:
+
+  ```
+  mvn clean install -PautoInstallBundle -PautoInstallPackage
+  ```
+
+16. Open the following URL in your browser: [http://localhost:4502/content/digital.html] (http://localhost:4502/content/digital.html).  The webpage should resemble the following image:
+
+  ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.40.25%20AM.png?token=ABVpFUNR5FymwfHyAUkilmvMLmBhmyf0ks5XHi0NwA%3D%3D "Screenshot")
