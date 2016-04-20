@@ -443,5 +443,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
 
   ```html
   <meta name="description" content="Our full-service offering is designed to tackle your ever-changing, ever-increasing business challenges by making sure the executional means never fail the strategic vision.">
-	<meta name="keywords" content="creative, agency, advertising, digital, marketing">
+  <meta name="keywords" content="creative, agency, advertising, digital, marketing">
   ```
+
+Source code can be downloaded [here] (https://github.com/PRFTAdobe/AEMTraining/raw/master/src/Add%20Dynamic%20Content%20to%20Default%20Page%20Template/digital.zip).
