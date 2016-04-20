@@ -44,17 +44,22 @@ Our default page template is a good start, but every page created from this temp
 
 ## Adding a Sightly Use Class
 
-Let's add some more logic to our page title and add some dynamic metadata to our html.  For this we will need a Sightly Use Class.  A use-class should only be used when something cannot be done in Sightly alone.
+Let's make our template a little more interesting.  Look at all the possible page properties: https://docs.adobe.com/docs/en/aem/6-1/author/page-authoring/editing-page-properties.html.  A page's tile should be referenced by the "Page Title" property, however this field is not mandatory.  The "Title" property is mandatory, but this restriction is sidestepped when a page is created via a batch process.  A page must always contain the "Name" property.  We need code to output the value of the "Page Title" property.  If it is blank, our code should return the value of the "Title" property.  If this property is undefined as well, our code should fall back to the "Name" property. For this we will need a Sightly Use Class.  A use-class should only be used when something cannot be done in Sightly alone.
 
 1. Edit the pom.xml file under the root digital directory.  Add the following dependencies:
 
   ```xml
   <dependency>
-    <groupId>com.adobe.aem</groupId>
-    <artifactId>uber-jar</artifactId>
-    <version>6.2.0</version>
-    <classifier>obfuscated-apis</classifier>
-    <scope>provided</scope>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.13</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-lang3</artifactId>
+	  <version>3.3.2</version>
+	  <scope>provided</scope>
   </dependency>
   <dependency>
     <groupId>org.powermock</groupId>
@@ -70,13 +75,20 @@ Let's add some more logic to our page title and add some dynamic metadata to our
   </dependency>
   ```
 
-2. Edit the pom.xml file under the `digital/core` directory.  Add the following dependencies:
+2. Update the version references in the pom.xml for "mockito-all" to 1.10.19.  Update the version reference in the pom.xml for all depenedencies of groupId "org.slf4j" to 1.7.13 from 1.5.11.
+
+3. Edit the pom.xml file under the `digital/core` directory.  Add the following dependencies:
 
   ```xml
   <dependency>
-    <groupId>com.adobe.aem</groupId>
-    <artifactId>uber-jar</artifactId>
-    <classifier>obfuscated-apis</classifier>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.13</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-lang3</artifactId>
   </dependency>
   <dependency>
     <groupId>org.powermock</groupId>
@@ -88,14 +100,13 @@ Let's add some more logic to our page title and add some dynamic metadata to our
   </dependency>
   ```
 
-3. We are going to follow TDD (Test Driven Design).  Let's create a test class named "PageHelperPageTitleTest" under the package `com.perficient.adobe.digital.core.sightly` in the `digital/core/src/test/java` directory.
-
-4. Set the contents of the class to be the following:
+4. We are going to follow TDD (Test Driven Design).  More information on TDD can be found here: https://en.wikipedia.org/wiki/Test-driven_development.  Let's create a test class named "PageHelperPageTitleTest" under the package `com.perficient.adobe.digital.core.sightly` in the `digital/core/src/test/java` directory.  Set the contents of the class to be the following:
 
   ```java
   package com.perficient.adobe.digital.core.sightly;
 
   import org.junit.runner.RunWith;
+  import org.mockito.Spy;
   import org.powermock.core.classloader.annotations.PrepareForTest;
   import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -103,5 +114,64 @@ Let's add some more logic to our page title and add some dynamic metadata to our
   @PrepareForTest({ PageHelper.class })
   public class PageHelperPageTitleTest {
 
+    @Spy
+	  private PageHelper pageHelper = new PageHelper();
+
   }
   ```
+
+5.  Your IDE should be informing you the PageHelper class cannot be resolved to a type.  Create a class named "PageHelper" under the package `com.perficient.adobe.digital.core.sightly` in the `digital/core/src/main/java` directory.  I usually like to name my Sightly Use Classes the name of the component they adding functionality to and the word "Helper".  If I created a Sightly Use Class to add functionality to an accordion component, I would name the class "AccordionHelper" and so on.  Set the contents of the class to be the following:
+
+  ```java
+  package com.perficient.adobe.digital.core.sightly;
+
+  import com.adobe.cq.sightly.WCMUse;
+
+  public class PageHelper extends WCMUse {
+
+	  @Override
+	  public void activate() throws Exception {
+
+	  }
+
+  }
+  ```
+
+6.  Let's add three methods to our test class to handle all the possible sources for our page title.
+
+  ```java
+  /**
+  * Test retrieving the title when the "Page Title" property has been set.
+  *
+  * @throws Exception
+  *             the exception
+  */
+  @Test
+  public void testTitleWithPageTitle() throws Exception {		
+    pageHelper.activate();
+  }
+
+  /**
+  * Test retrieving the title when the "Title" property has been set and the "Page Title" property has not been set.
+  *
+  * @throws Exception
+  *             the exception
+  */
+  @Test
+  public void testTitleWithTitle() throws Exception {
+    pageHelper.activate();
+  }
+
+  /**
+   * Test retrieving the title when only the page name is present.
+   *
+   * @throws Exception
+   *             the exception
+   */
+  @Test
+  public void testTitleWithName() throws Exception {
+    pageHelper.activate();
+  }
+  ```
+
+7. 
