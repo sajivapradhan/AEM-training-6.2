@@ -293,4 +293,4 @@ Let's make our template a little more interesting.  Look at all the possible pag
 
 16. Open the following URL in your browser: [http://localhost:4502/content/digital.html] (http://localhost:4502/content/digital.html).  The webpage should resemble the following image:
 
-  ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-18%20at%2010.40.25%20AM.png?token=ABVpFUNR5FymwfHyAUkilmvMLmBhmyf0ks5XHi0NwA%3D%3D "Screenshot")
+  ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-20%20at%203.41.35%20PM.png?token=ABVpFeOl7W0eTcAPou6s9LDjypZE2x51ks5XIRZHwA%3D%3D "Screenshot")
