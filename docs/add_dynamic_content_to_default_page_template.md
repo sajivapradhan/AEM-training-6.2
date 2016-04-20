@@ -313,7 +313,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-20%20at%203.41.35%20PM.png?token=ABVpFeOl7W0eTcAPou6s9LDjypZE2x51ks5XIRZHwA%3D%3D "Screenshot")
 
 
-## Add Dynamic Page Meta data-sly-test
+## Add Dynamic Page Meta Data
 
 1. Add the following Private field to the PageHelperTest class:
 
