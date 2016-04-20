@@ -100,7 +100,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
   </dependency>
   ```
 
-4. We are going to follow TDD (Test Driven Design).  More information on TDD can be found here: https://en.wikipedia.org/wiki/Test-driven_development.  Let's create a test class named "PageHelperPageTitleTest" under the package `com.perficient.adobe.digital.core.sightly` in the `digital/core/src/test/java` directory.  Set the contents of the class to be the following:
+4. We are going to follow TDD (Test Driven Design).  More information on TDD can be found here: https://en.wikipedia.org/wiki/Test-driven_development.  Let's create a test class named "PageHelperTest" under the package `com.perficient.adobe.digital.core.sightly` in the `digital/core/src/test/java` directory.  Set the contents of the class to be the following:
 
   ```java
   package com.perficient.adobe.digital.core.sightly;
@@ -112,7 +112,7 @@ Let's make our template a little more interesting.  Look at all the possible pag
 
   @RunWith(PowerMockRunner.class)
   @PrepareForTest({ PageHelper.class })
-  public class PageHelperPageTitleTest {
+  public class PageHelperTest {
 
     @Spy
 	  private PageHelper pageHelper = new PageHelper();
@@ -217,6 +217,23 @@ Let's make our template a little more interesting.  Look at all the possible pag
 9. Use Mockito to "mock" the responses from AEM.
 
   ```java
+  /** The current page. */
+	@Mock
+	private Page currentPage;
+
+	/** The page helper. */
+	@Spy
+	private PageHelper pageHelper = new PageHelper();
+
+	/**
+	 * Setup.
+	 */
+	@Before
+	public void setup() {
+		doReturn(currentPage).when(pageHelper).getCurrentPage();
+		when(currentPage.getName()).thenReturn("digital");
+	}
+
   /**
   * Test retrieving the title when the "Page Title" property has been set.
   *
@@ -294,3 +311,137 @@ Let's make our template a little more interesting.  Look at all the possible pag
 16. Open the following URL in your browser: [http://localhost:4502/content/digital.html] (http://localhost:4502/content/digital.html).  The webpage should resemble the following image:
 
   ![Screenshot](https://raw.githubusercontent.com/PRFTAdobe/AEMTraining/master/img/Screen%20Shot%202016-04-20%20at%203.41.35%20PM.png?token=ABVpFeOl7W0eTcAPou6s9LDjypZE2x51ks5XIRZHwA%3D%3D "Screenshot")
+
+
+## Add Dynamic Page Meta data-sly-test
+
+1. Add the following Private field to the PageHelperTest class:
+
+  ```java
+  /** The page properties. */
+	private ValueMap pageProperties;
+  ```
+
+2. Add the following to the `setup` method:
+
+  ```java
+  Map<String, Object> propertiesMap = new HashMap<String, Object>();
+	propertiesMap.put("jcr:description",
+				"Our full-service offering is designed to tackle your ever-changing, ever-increasing business challenges by making sure the executional means never fail the strategic vision.");
+	pageProperties = new ValueMapDecorator(propertiesMap);
+	doReturn(pageProperties).when(pageHelper).getPageProperties();
+  ```
+
+3. Add the following method to the PageHelperTest class:
+
+  ```java
+  /**
+   * Test description.
+   *
+   * @throws Exception the exception
+   */
+  @Test
+  public void testDescription() throws Exception {
+    pageHelper.activate();
+    assertEquals(
+        "Our full-service offering is designed to tackle your ever-changing, ever-increasing business challenges by making sure the executional means never fail the strategic vision.",
+        pageHelper.getDescription());
+  }
+  ```
+
+4. Create the getDescription method within PageHelper:
+
+  ```java
+  /**
+   * Gets the description.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+    return getPageProperties().get("jcr:description", StringUtils.EMPTY);
+  }
+  ```
+
+5. Add the following to the `setup` method of PageHelperTest:
+
+  ```java
+  Tag tag = mock(Tag.class);
+  Tag[] tagArray = { tag, tag, tag, tag, tag };  
+  when(currentPage.getTags()).thenReturn(tagArray);
+  when(tag.getTitle()).thenReturn("digital", "marketing", "advertising", "agency", "creative");
+  ```
+
+6. Add the following method to the PageHelperTest class:
+
+  ```java
+  /**
+	 * Test keywords.
+	 */
+	@Test
+	public void testKeywords() throws Exception {
+		pageHelper.activate();
+		assertEquals("digital, marketing, advertising, agency, creative", pageHelper.getKeywords());
+
+	}
+  ```
+
+7. Create the getKeywords method within PageHelper:
+
+  ```java
+  /**
+	 * Gets the keywords.
+	 *
+	 * @return the keywords
+	 */
+	public String getKeywords() {
+
+		StringBuilder tags = new StringBuilder();
+		Tag[] tagArray = currentPage.getTags();
+
+		if (tagArray != null && tagArray.length > 0) {
+			for (Tag tag : tagArray) {
+				if (tag != null) {
+					tags.append(tag.getTitle());
+					tags.append(", ");
+				}
+			}
+		}
+
+		return StringUtils.removeEnd(tags.toString(), ", ");
+	}
+  ```
+
+8. Run the JUnit tests.  You should not see any failed tests.
+
+9. Update page-default.html to use the Sightly methods:
+
+  ```html
+  <meta name="description" content="${pageHelper.description}">
+  <meta name="keywords" content="${pageHelper.keywords}">
+  ```
+
+10. Open up your browser to [http://localhost:4502/siteadmin#/content] (http://localhost:4502/siteadmin#/content).
+
+11. Right-click on the "Digital" page and click on "Properties".  Expand "More Titles and Description".  Set "Description" to "Our full-service offering is designed to tackle your ever-changing, ever-increasing business challenges by making sure the executional means never fail the strategic vision.".  One at a time add the following keywords to the "Tags/Keywords" input.  Click OK after each entry.  
+  ```
+  digital
+  marketing
+  advertising
+  agency
+  creative
+  ```
+
+  AEM will generate a tag for each of these keywords.
+
+12. At the root of digital, type the following in a terminal or in a command prompt:
+
+  ```
+  mvn clean install -PautoInstallBundle -PautoInstallPackage
+  ```
+
+16. Open the following URL in your browser: [http://localhost:4502/content/digital.html] (http://localhost:4502/content/digital.html).  View the source of the page.  The Meta Tags should resemble the following:
+
+  ```html
+  <meta name="description" content="Our full-service offering is designed to tackle your ever-changing, ever-increasing business challenges by making sure the executional means never fail the strategic vision.">
+	<meta name="keywords" content="creative, agency, advertising, digital, marketing">
+  ```
