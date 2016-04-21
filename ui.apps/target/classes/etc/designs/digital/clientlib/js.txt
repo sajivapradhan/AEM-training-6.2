@@ -1,3 +1,0 @@
-#base=js
-plugins.js
-main.jss
