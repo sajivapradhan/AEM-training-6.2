@@ -64,9 +64,28 @@ Now that we have the base component, we're ready to add back in our static html.
 Back in the /apps/digital/structure/page-default/partials/header.html file, we're going to add a static reference to the header component.  Inside (the now empty) <template> tag, add a reference to the new header component using sightly.
 ```html
 <template data-sly-template.header="">
-    <sly data-sly-resource="${'header' @ resourceType='digital/components/content/header'}"/>
+    <section data-sly-resource="${'header' @ resourceType='digital/components/content/header'}" data-sly-unwrap="${wcmmode.disabled}"></section>
 </template>
 ```
-I prefer to use a <sly> tag for includes, as it will automatically unwrap, and also gives the deveopers an idea that you are doing a sightly call, instead of standard HTML markup.  Other elements can be used just as successfully.  You will notice that I am using the "header" node to configure properties, and point to the "header" resourceType that we just created.  If you refresh the page, you should see the same result as having the static html inside the template tags.
+Here, I chose to use a <section> tag to include the header component, then unwrap it if we're in publish (wcmmode=disabled).  However, an equally valid approach would be to set it as a header tag, with the "banner" class, and not unwrap.  The reason we cannot use a "sly" tag, or self-unwrapping, is due to the component highlighting.  In a component that is dropped into a parsys, we wouldn't have this issue, as it will automatically wrap the component in an extra div for sizing purposes.  You will notice that I am using the "header" node to configure properties, and point to the "digital/components/content/header" resourceType that we just created.  If you refresh the page, you should see the same result as having the static html inside the template tags.
 
-You will also hopefully recognize that there is a problem with storing the configurations in the "header" node.  If so, good job!  This is a common issue and we'll touch on the solution a bit later in the exercise.  For now, lets work on creating a dialog.
+You will also hopefully recognize that there is a problem with storing the configurations in the "header" node.  If so, good job!  This is a common issue and we'll touch on the solution a bit later in the exercise.  For now, lets bring in some minor authoring css tweaks for the header.  In the AEMTraining/assets folder, you will find an "author-clientlibs" folder.  Copy this folder into your header component.  This file contains a few tweaks to allow proper editing on the header.  The reason this is required is due to the Perficient Digital header being in a fixed position.  Because it's in a fixed position, AEM has difficulties figuring out where to put the editing boxes.  To reduce headaches in the future, we will remove the "fixed" position for the header in author mode, and instead have it only at the top of the page.  In the publisher, it will return to normal behavior, as these tweaks are only loaded on author.
+
+#### Creating the TouchUI Dialog
+
+At time of writing, there is an issue with AEM where if no dialog.xml exists, it will not allow the component to be edited.  Due to this, we will need to first create an empty dialog.xml node.  As this tutorial is focused on TouchUI components, we will not go through the process of adding an ExtJS based dialog for classic UI.  Create a "dialog.xml" under  your header component with the following content (an empty dialog): 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Dialog"
+          height="400"
+          stateful="false"
+          xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tabs jcr:primaryType="cq:TabPanel">
+            <items jcr:primaryType="cq:WidgetCollection">
+            </items>
+        </tabs>
+    </items>
+</jcr:root>
+```
