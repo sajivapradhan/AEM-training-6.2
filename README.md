@@ -42,7 +42,7 @@ Now we have a static header!  Great!  However, this won't be very useful for mul
 #### Moving the static code into a header component
 First step here is to create a component under /apps/digital/content/header.  I prersonally complete this step using the IDE and a .content.xml file.  The resulting structure should be similar to the following screenshot:
 
-<<Insert Screenshot>>
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/HeaderComponentLocation.png "Structure is fun!")
 
 Inside the .content.xml, we'll need to define the component.  This can be done by manually creating a .content.xml, or by adding properties to the header node in crx/de and vlt or packaging it back to your IDE.  In this case we're going to use the following properties:
 * jcr:primaryType="cq:Component"
