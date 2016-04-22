@@ -1,0 +1,8 @@
+/* Disable header scroll with page */
+header {
+	position:relative !important;
+}
+
+body {
+	margin-top:0 !important;
+}
