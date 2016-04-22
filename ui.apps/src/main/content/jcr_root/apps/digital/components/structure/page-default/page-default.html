@@ -1,45 +1,12 @@
 <!doctype html>
 <html class="no-js" lang="" data-sly-use.pageHelper="com.perficient.adobe.digital.core.sightly.PageHelper">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>${pageHelper.pageTitle}</title>
-		<meta name="description" content="${pageHelper.description}">
-		<meta name="keywords" content="${pageHelper.keywords}">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<link rel="shortcut icon" href="/etc/designs/digital/clientlib/img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/etc/designs/digital/clientlib/img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="apple-touch-icon" sizes="57x57" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/etc/designs/digital/clientlib/img/favicon/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="/etc/designs/digital/clientlib/img/favicon/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/etc/designs/digital/clientlib/img/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="/etc/designs/digital/clientlib/img/favicon/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/etc/designs/digital/clientlib/img/favicon/favicon-16x16.png">
-		<link rel="manifest" href="/etc/designs/digital/clientlib/img/favicon/manifest.json">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="/etc/designs/digital/clientlib/img/favicon/ms-icon-144x144.png">
-		<meta name="theme-color" content="#ffffff">
-
-		<link rel='stylesheet' data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.css @ categories='digital'}" data-sly-unwrap />
-		<script src="/etc/designs/digital/clientlib/js/vendor/modernizr-2.8.3.min.js"></script>
+		<meta data-sly-use.tmpl="partials/head.html" data-sly-call="${tmpl.head @ pageTitle=pageHelper.pageTitle, description=pageHelper.description, keywords=pageHelper.keywords}" data-sly-unwrap />
+		<link data-sly-use.tmpl="partials/headlibs.html" data-sly-call="${tmpl.headlibs}" data-sly-unwrap />
 	</head>
 	<body>
-		<!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
-
-		<p>
-			Welcome to the "${pageHelper.pageTitle}" page!
-		</p>
-
-		<script data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-call="${clientLib.js @ categories='digital'}" data-sly-unwrap></script>
+		<section data-sly-use.tmpl="partials/main.html" data-sly-call="${tmpl.main @ pageTitle=pageHelper.pageTitle}" data-sly-unwrap></section>
+		<section data-sly-use.tmpl="partials/footer.html" data-sly-call="${tmpl.footer}" data-sly-unwrap></section>
+		<section data-sly-use.tmpl="partials/footlibs.html" data-sly-call="${tmpl.footlibs}" data-sly-unwrap></section>
 	</body>
 </html>
