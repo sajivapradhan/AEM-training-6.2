@@ -1,6 +1,6 @@
 # Create the Perficient Digital Header
 
-This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
+This is an exercise to build out the Perficient Digital Header for our training series.  It is expected that you have completed the page-template exercises prior to starting on this component.
 
 ## How to build
 
