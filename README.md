@@ -1,16 +1,6 @@
-# Sample AEM project template
+# Create the Perficient Digital Header
 
 This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
-
-## Modules
-
-The main parts of the template are:
-
-* core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
-* ui.apps: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, templates, runmode specific configs as well as Hobbes-tests
-* ui.content: contains sample content using the components from the ui.apps
-* ui.tests: Java bundle containing JUnit tests that are executed server-side. This bundle is not to be deployed onto production.
-* ui.launcher: contains glue code that deploys the ui.tests bundle (and dependent bundles) to the server and triggers the remote JUnit execution
 
 ## How to build
 
@@ -22,33 +12,30 @@ If you have a running AEM instance you can build and package the whole project a
 
     mvn clean install -PautoInstallPackage
     
-Or to deploy it to a publish instance, run
+## Overview
+* Creating a static header
+* Making the editor authorable
+### Part 1 - Create a static version of the Header
 
-    mvn clean install -PautoInstallPackagePublish
-    
-Or to deploy only the bundle to the author, run
+Inside the "AEMTraining/assets" folder, within the "Create-Perficient-Digital-Header" branch, you will notice a file named "header-static.html".  The first step to adding a header component into AEM is to get the HTML markup, and massage it into our existing AEM project.  Copy the contents of the header, and paste it into the partial we created for the page header, "AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/structure/page-default/partials/header.html"
 
-    mvn clean install -PautoInstallBundle
+After pasting the contents, it will look similar to the following:
 
-## Testing
+```html
+<template data-sly-template.header="">
+    <header role="banner">
+        <div class="search-icon" id="search-trigger-overlay">
+            <span></span>
+        </div>
+        <div class="container-fluid">
+        ...
+    </header>
+</template>
+```
 
-There are three levels of testing contained in the project:
+Now lets refresh the page and see what we have.  You'll notice that the logo doesn't display correctly, and many of the navigation items also look incorrect.  Don't worry!  This is intentional.  Many times when we are given HTML to manipulate into an AEM component, they will require some small changes in order to work correctly.  In this case, the path to the logo image and the link to the "Services" navigation item are incorrect.  
 
-* unit test in core: this show-cases classic unit testing of the code contained in the bundle. To test, execute:
+The logo image is simple enough of a change, currently it exists under /etc/designs/digital/img, go ahead and modify all previous references to the logo to the correct path.  
 
-    mvn clean test
+The Services issue is due to it being flagged as an invalid link.  This is a common issue that can be temporarily resolved by setting the url to "#".
 
-* server-side integration tests: this allows to run unit-like tests in the AEM-environment, ie on the AEM server. To test, execute:
-
-    mvn clean integration-test -PintegrationTests
-
-* client-side Hobbes.js tests: JavaScript-based browser-side tests that verify browser-side behavior. To test:
-
-    in the browser, open the page in 'Developer mode', open the left panel and switch to the 'Tests' tab and find the generated 'MyName Tests' and run them.
-
-
-## Maven settings
-
-The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
-
-    http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
