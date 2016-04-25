@@ -1,6 +1,7 @@
 /* Disable header scroll with page */
 header {
 	position:relative !important;
+	display: inline-block !important;
 }
 
 body {
