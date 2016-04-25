@@ -41,6 +41,12 @@
       <artifactId>aem-api</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.adobe.acs</groupId>
+      <artifactId>acs-aem-commons-content</artifactId>
+      <version>2.3.2</version>
+      <type>content-package</type>
+    </dependency>
+    <dependency>
       <groupId>com.day.cq.wcm</groupId>
       <artifactId>cq-wcm-taglib</artifactId>
     </dependency>
@@ -71,14 +77,6 @@
     <resources>
       <!-- define the resources that will go into the package -->
       <resource>
-        <targetPath>../vault-work/META-INF</targetPath>
-        <!--
-                    we want to keep some of the META-INF files and not configure
-                    everything in the plugin.
-                -->
-        <directory>${basedir}/src/main/content/META-INF</directory>
-      </resource>
-      <resource>
         <directory>${basedir}/src/main/content/jcr_root</directory>
         <excludes>
           <!-- exclude .vlt control files in the package -->
@@ -96,32 +94,8 @@
       </resource>
     </resources>
     <plugins>
-      <!--
-                we want to keep some of the META-INF files and not configure
-                everything in the plugin (mainly the filters).
-
-                copy the resource explicitly instead of attaching it to the default resources
-            -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-metainf-vault-resources</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/vault-work/META-INF</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${basedir}/META-INF</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
         <!-- ensure that the empty directories are copied -->
         <configuration>
           <includeEmptyDirs>true</includeEmptyDirs>
@@ -135,7 +109,7 @@
         <artifactId>content-package-maven-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
-          <filterSource>${basedir}/META-INF/vault/filter.xml</filterSource>
+          <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
           <verbose>true</verbose>
           <failOnError>true</failOnError>
           <group>Perficient Digital Content Package</group>
@@ -146,6 +120,13 @@
               <target>/apps/digital/install</target>
             </embedded>
           </embeddeds>
+          <subPackages>
+            <subPackage>
+              <groupId>com.adobe.acs</groupId>
+              <artifactId>acs-aem-commons-content</artifactId>
+              <filter>true</filter>
+            </subPackage>
+          </subPackages>
         </configuration>
       </plugin>
     </plugins>
@@ -199,6 +180,7 @@
                 </goals>
               </execution>
             </executions>
+
             <configuration>
               <targetURL>http://${aem.publish.host}:${aem.publish.port}/crx/packmgr/service.jsp</targetURL>
               <failOnError>true</failOnError>
