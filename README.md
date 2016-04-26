@@ -71,7 +71,7 @@ Here, I chose to use a ```<section>``` tag to include the header component, then
 
 You will also hopefully recognize that there is a problem with storing the configurations in the "header" node.  If so, good job!  This is a common issue and we'll touch on the solution a bit later in the exercise.  For now, lets bring in some minor authoring css tweaks for the header.  In the AEMTraining/assets folder, you will find an "author-clientlibs" folder.  Copy this folder into your header component.  This file contains a few tweaks to allow proper editing on the header.  The reason this is required is due to the Perficient Digital header being in a fixed position.  Because it's in a fixed position, AEM has difficulties figuring out where to put the editing boxes.  To reduce headaches in the future, we will remove the "fixed" position for the header in author mode, and instead have it only at the top of the page.  In the publisher, it will return to normal behavior, as these tweaks are only loaded on author.
 
-#### Creating the TouchUI Dialog
+#### Creating the Classic Dialog
 
 At time of writing, there is an issue with AEM where if no dialog.xml exists, it will not allow the component to be edited.  Due to this, we will need to first create an empty dialog.xml node.  As this tutorial is focused on TouchUI components, we will not go through the process of adding an ExtJS based dialog for classic UI.  Create a "dialog.xml" under  your header component with the following content (an empty dialog): 
 ```xml
@@ -89,3 +89,22 @@ At time of writing, there is an issue with AEM where if no dialog.xml exists, it
     </items>
 </jcr:root>
 ```
+#### Creating the TouchUI Dialog
+
+For beginning a touchui dialog, I always personally will start from a previously created one (as similar as possible) from a previous project.  Given this is a training exercise, I will share an outline to utilize in this step for speedier results.  Copy the ```_cq_dialog.xml``` from ```AEMTraining/assets``` folder to ```AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/content/header/_cq_dialog.xml```.  This will serve as your starting point.  The dialog you just copied has the following entries:
+* Tab 1: General 
+  * Logo path - A pathfield pointing to the DAM to select a logo image (no upload is supported)
+  * Alt Text - Alt text for visually impared - need to keep everything accessible! (textfield)
+  * Logo URL - Where do we take the user when the logo is clicked? (pathfield)
+* Tab 2: Navigation Menu 1
+  * Menu title - What do we put as the tab/navigation item title? (textfield)
+  * Menu URL - Where does that take you when clicked on directly? (pathfield)
+  * Menu items - Now list all the links to appear within that navigation item (This is done using an ACS Commons composite multifield, pathfield, as well as a textfield)
+* Tab 3,4,5: Navigation Menu 2,3,4 respectively
+  * These tabs were left blank to complete during this exercise
+* Tab 6: Right rail links
+  * Link 1 Path: Location to link to for the leftmost link, pathfield
+  * Link 1 Text: Text to display for first link
+  * Rest of this tab left blank for exercise
+
+First, let's build and see what we have.
