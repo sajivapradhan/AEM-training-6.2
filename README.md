@@ -91,7 +91,7 @@ At time of writing, there is an issue with AEM where if no dialog.xml exists, it
 ```
 #### Creating the TouchUI Dialog
 
-For beginning a touchui dialog, I always personally will start from a previously created one (as similar as possible) from a previous project.  Given this is a training exercise, I will share an outline to utilize in this step for speedier results.  Copy the ```_cq_dialog.xml``` from ```AEMTraining/assets``` folder to ```AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/content/header/_cq_dialog.xml```.  This will serve as your starting point.  Before going much further, lets gather a few things from the look and feel of the header.  Currently, looks like there are 5 main navigation items, each with a list of associated links, as well as a landing page itself.  Inside of a given navigation item, each sub-link is split into four columns.  Now looking at the right hand side, we see four utility links and a Search button.  For the purpose of this exercise, we are not going to hook up the search button.  The dialog you just copied has the following entries:
+For beginning a touchui dialog, I always personally will start from a previously created one (as similar as possible) from a previous project.  Given this is a training exercise, I will share an outline to utilize in this step for speedier results.  Copy the ```_cq_dialog.xml``` and the ```_cq_editConfig.xml``` from ```AEMTraining/assets``` folder to ```AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/content/header```.  This will serve as your starting point.  Before going much further, lets gather a few things from the look and feel of the header.  Currently, looks like there are 5 main navigation items, each with a list of associated links, as well as a landing page itself.  Inside of a given navigation item, each sub-link is split into four columns.  Now looking at the right hand side, we see four utility links and a Search button.  For the purpose of this exercise, we are not going to hook up the search button.  The dialog you just copied has the following entries:
 * Tab 1: General 
   * Logo path - A pathfield pointing to the DAM to select a logo image (no upload is supported)
   * Alt Text - Alt text for visually impared - need to keep everything accessible! (textfield)
@@ -202,3 +202,29 @@ setSection1Label(properties.get(NAV_1_LABEL_PROP,DEFAULT_NAV1_LABEL));
 setSection1URL(properties.get(NAV_1_URL_PROP,DEFAULT_NAV1_URL));
 setNav1Items(MultiFieldPanelFunctions.getMultiFieldPanelValues(getResource(),NAV_1_ITEMS_PROP));
 ```
+Great!  Now the back-end is set for the Navigation 1 tab, lets now see if we can put those variables into the template we created!  On line 28 (approx.) of header.html, modify it to be the following: 
+```<li data-sly-use.templ="navSection.html" data-sly-call="${templ.navSection @ sectionLabel=header.section1Label, sectionURL=header.section1URL, sectionLinks=header.nav1Items}" data-sly-unwrap></li>```
+
+The above will pass in our variables into the template we created!  However, we still haven't hooked up that template to utilize it's own variables!  Lets go an take a look at that now.  Open up the "navSection.html" and do a search for the term "Services".  Since we copied this template using the services navigation section as a default, we can utilize this search to replace instances of "Services" with the passed in variable, section1Label.  For me, the search had two results, lines 4 and 8.  I replaced each instance of "Services" with "${sectionLabel}", and noticed that each of these references were within anchor tags.  Go ahead and replace the href of those anchor tags with the sectionURL variable.  The end result should look as follows:
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/templateHeaders.png "Getting close!")
+
+Let's do a build and check our progress.  If we fill out the "Navigation 1" tab (or had it filled out), the page refresh should update with your proper label being displayed.  Yay!
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/SuperServices.png "Super Services!")
+
+Now to the fun part!  Let's get our navigation links for the "Navigation 1" tab included.  At this point, we're already passing in the list of items to create links out of, we just need to display them as ```<li class="mega-menu-item">``` items.  First, let's delete all but one of the static links.  We will use the one remaining link to act as a template for all link items.  Next, we need to loop over the sectionLinks variable to get the URL and label of each link.  In sightly, this can be done by using the data-sly-list attribute.  Since we're looping over the ```<li>``` items, we should put the loop initializer inside of the "ul" tag.  This tells AEM that we want to copy all data within the ```<ul class="list-unstyled">``` element will be repeated for each list item.  This is what we should have so far:
+```html
+<div class="menu-block">
+    <ul class="list-unstyled" data-sly-list.link="${sectionLinks}">
+        <li class="mega-menu-item"><a href="">Adobe</a></li>
+    </ul>
+</div>
+```
+You'll notice taht we used ```data-sly-list.link``` as opposed to just ```data-sly-list```.  Technically, both are valid implementations, but I prefer the more explicit variable defining approach as it's much easier to read.  In this case, we're storing each looped item inside a variable named link.  The next step is to put the link details into the anchor tag:
+```html
+    <ul class="list-unstyled" data-sly-list.link="${sectionLinks}">
+        <li class="mega-menu-item"><a href="${link.url}">${link.label}</a></li>
+    </ul>
+```
+
+_Exercise:_ Use what you've learned above to hook up the Navigation 2,3,4,5 tabs to utilize the same template.
+_Bonus:_ We also did not set up the right-most links (Utility links).  Use your knowledge of a data-sly-list, and the ACS Multifield Utility class to configure this.
