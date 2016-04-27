@@ -21,6 +21,10 @@
   <description>Core bundle for Perficient Digital</description>
   <dependencies>
     <dependency>
+      <groupId>com.adobe.acs</groupId>
+      <artifactId>acs-aem-commons-bundle</artifactId>
+    </dependency>
+    <dependency>
       <groupId>biz.aQute</groupId>
       <artifactId>bndlib</artifactId>
     </dependency>
