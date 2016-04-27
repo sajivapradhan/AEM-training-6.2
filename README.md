@@ -91,7 +91,7 @@ At time of writing, there is an issue with AEM where if no dialog.xml exists, it
 ```
 #### Creating the TouchUI Dialog
 
-For beginning a touchui dialog, I always personally will start from a previously created one (as similar as possible) from a previous project.  Given this is a training exercise, I will share an outline to utilize in this step for speedier results.  Copy the ```_cq_dialog.xml``` from ```AEMTraining/assets``` folder to ```AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/content/header/_cq_dialog.xml```.  This will serve as your starting point.  The dialog you just copied has the following entries:
+For beginning a touchui dialog, I always personally will start from a previously created one (as similar as possible) from a previous project.  Given this is a training exercise, I will share an outline to utilize in this step for speedier results.  Copy the ```_cq_dialog.xml``` from ```AEMTraining/assets``` folder to ```AEMTraining/ui.apps/src/main/content/jcr_root/apps/digital/components/content/header/_cq_dialog.xml```.  This will serve as your starting point.  Before going much further, lets gather a few things from the look and feel of the header.  Currently, looks like there are 5 main navigation items, each with a list of associated links, as well as a landing page itself.  Inside of a given navigation item, each sub-link is split into four columns.  Now looking at the right hand side, we see four utility links and a Search button.  For the purpose of this exercise, we are not going to hook up the search button.  The dialog you just copied has the following entries:
 * Tab 1: General 
   * Logo path - A pathfield pointing to the DAM to select a logo image (no upload is supported)
   * Alt Text - Alt text for visually impared - need to keep everything accessible! (textfield)
@@ -99,12 +99,36 @@ For beginning a touchui dialog, I always personally will start from a previously
 * Tab 2: Navigation Menu 1
   * Menu title - What do we put as the tab/navigation item title? (textfield)
   * Menu URL - Where does that take you when clicked on directly? (pathfield)
-  * Menu items - Now list all the links to appear within that navigation item (This is done using an ACS Commons composite multifield, pathfield, as well as a textfield)
-* Tab 3,4,5: Navigation Menu 2,3,4 respectively
+  * Menu items - Now list all the links to appear within that navigation item (This is done using an ACS Commons composite multifield, pathbrowser, as well as a textfield) - I've made the decision to split this up into 4 groups in the back-end. 
+* Tab 3,4,5,6: Navigation Menu 2,3,4 respectively
   * These tabs were left blank to complete during this exercise
-* Tab 6: Right rail links
-  * Link 1 Path: Location to link to for the leftmost link, pathfield
+* Tab 7: Right rail links
+  * Navigation Items: Now list all the links to appear within that navigation item (This is done using an ACS Commons composite multifield, pathbrowser, and textfield)
   * Link 1 Text: Text to display for first link
   * Rest of this tab left blank for exercise
 
 First, let's build and see what we have.
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/TouchUIDialog.png "That dialog is sleek!")
+
+Great!  Now using the provided dialog, fill in the values for Navigation Menu 2,3,4,5.  These should be essentially the sameas Navigation Menu 1, save for the different names.  In each tab, replace the "1" within the "name" of the dialog property with the corresponding tab number.  For example: ./nav2Items (for the 3rd tab, Navigation 2).
+
+Now, redeploy your code.  You should see your new tabs behave the same to the "Navigation 1" tab.  Fill in values for each field and save.  Ensure that upon re-opening all of the values match what was entered.  If values do not match, take a closer look at the names used in the failing fields tabs.  
+
+#### Hooking up the back-end
+Let's take a quick look at the expanded Header markup (before connecting the properties), so we have a better idea of how we'll turn this into a dynamic component.
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/ExpandedHeader.png "There's a good design!")
+
+First things first, we'll need to create a WCMUsePojo to be used with the component.  This is required based on some of the more complicated logic that we will need to deal with for the composite multifield items.  For more basic components, we would be able to access the properties directly, making this step unnecessary.
+
+Create a Java class under ```AEMTraining/core/src/main/java/com/perficient/adobe/digital/core/sightly/components/PDHeader.java```.  As we'll be connecting this class to a Sightly component, it'll naturally extend the WCMUse class, as seen here: ```public class PDHeader extends WCMUse{```.  Initially, this will prompt an error, as you aren't overriding the ```activate()``` class.  Go ahead and create it ```java
+@Override
+public void activate() throws Exception {
+
+}```
+
+Given we already have the dialog created, lets begin hooking up the authored values in the same order they appear in the dialog.  Lets start with the 'Logo' on the general tab.  We will do all three of it's properties at once, as they're all related.  In the java class, add class-level variables for each of your logo properties.  In this example, these will be named: logoUrl, logoPath, logoAltText.  Go ahead an generate default getter/setter methods for each of these variables.  The end result should be similar to the following:
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/LogoGetterSetter.png "Most excellent getter/setters!")
+
+
+
+ 
