@@ -129,6 +129,76 @@ public void activate() throws Exception {
 Given we already have the dialog created, lets begin hooking up the authored values in the same order they appear in the dialog.  Lets start with the 'Logo' on the general tab.  We will do all three of it's properties at once, as they're all related.  In the java class, add class-level variables for each of your logo properties.  In this example, these will be named: logoUrl, logoPath, logoAltText.  Go ahead an generate default getter/setter methods for each of these variables.  The end result should be similar to the following:
 ![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/LogoGetterSetter.png "Most excellent getter/setters!")
 
+Now since these properties not require any complex logic, we can populate them from the page properties in the activate method.  From extending the WCMUse class, we inherit the method ```getProperties()```, which will return a nice valuemap for us to manipulate.  Those with any previous AEM experience will find this fairly familiar.  To allow us to not require repeat calls to the ```getProperties()``` method, lets start out the first line of the activate method as ```ValueMap properties = getProperties();```.  From there, we can retrieve properties from the component object.  Assuming no names were changed, the properties we need to access are: 
+* logoImage
+* logoAltText
+* logoImageURL
 
+The ValueMap class has a method to retrieve properties, with the ability to specify the fallback class, or property value, if no such property exists.  For the time being, we'll just use a class for the fallback.  On the second line of the activate method (after defining the properties ValueMap), lets set the logo properties: ```setLogoPath(properties.get("logoImage",String.class))```  Repeat the same process for logoImageURL and logoAltText. 
 
- 
+_Bonus:_ Create static variables for the property keys.  This is a best practice as it allows future authors to modify the key values in a single location, while also allowing other components access to those property names, in case their logic may depend on it.
+
+So, now we have the logo getters and setters ready.  How do we actually utilize it in the component?  Great question!  This is where we can utilize the ```data-sly-use``` attribute.  Using this tag we can tell a given tag element to utilize a Java class which implements WCMUse.  In our header component, we will need to use it throughout the markup, so it makes the most sense to add this tag to the header element.  When invoking data-sly-use, we can add a variable to store the resulting java object.  This is essential for our component to utilize the various methods that we'll be creating, including the getter/setter methods for the Logo.  The value of the data-sly-use attribute is supposed to point to a javascript or WCMUse implemented Java class.  As we've created the latter, the result should be similar to the following:
+```html
+<header role="banner" data-sly-use.header="com.perficient.adobe.digital.core.sightly.components.PDHeader">
+```
+The above implementation stores the component into a variable named "header".  This object can be accessed using standard sightly tactics ```${header}```.  To access a method, you can strip off the "get" portion of the method name, for example ```${header.logoPath}``` would return the result of ```getLogoPath()``` in the PDHeader class.  Using this information, we can modify the image references to '/etc/designs/digital/img/perficient-logo.png' to instead reference ```${header.logoPath}``` resulting in the following:
+```<img src="/etc/designs/digital/img/perficient-logo.png">``` --> ```<img src="${header.logoPath}">```.  Now you may be thinking "Hey!  There is no altText on these images!", well, as developers we have to see these types of mistakes and at least bring it to the attention of your technical lead.  In this situation, I am your technical lead, and I say, add it in!  Accessible sites are the new norm!  Add an altText attribute to the image, and have it set to be ```${header.logoAltText}```.  Lastly, we have configured the URL for when someone clicks the logo image.  As each img element is within an anchor container, we just need to now modify the anchor to point to our authored url.  Replace the ```href='#'``` with ```href="${header.logoUrl}"```.
+
+Lets do another build to the server, to see where we're at.  Once you refresh the page, you'll notice some problems right off the bat!  The logo image is blank if the dialog is not authored!  This is a classic case of a missed default.  In this case, we want to make sure that if the image is not selected, we fall back to the original /etc/designs value.  Let's jump back to the PDHeader class and modify that behavior.
+
+You'll remember me mentioning a few steps back that the ValueMap class' get function has the ability to return default values, or a default null-set class in leu of a default.  Lets create some static variables to utilize as property defaults.  For the logo image path, lets use the original value, /etc/designs/digital/img/perficient-logo.png.  For example, for the Image Path, I modified the following two lines:
+```java
+    public static String DEFAULT_LOGO_IMAGE = "/etc/designs/digital/img/perficient-logo.png";
+    ...
+    public void activate() throws Exception {
+        ...
+        setLogoPath(properties.get(LOGO_IMAGE_PROP,DEFAULT_LOGO_IMAGE));
+        ...
+    }
+```
+Please go ahead and do the same for the default alt-text and the default image URL.  Set them to be "Perficient Digital" and "http://www.perficient.com/services/perficient-digital" respectively.  Upon doing another build, you should see your default values set properly in the header.  Excellent work!  Now do a little bit of testing, by setting the logo image, url, and alt-text to new values.  Ensure that they're updated accordingly.
+
+Huzzah!  We've got some authoring in place!  Now lets work on the navigation section items.  There are 5 navigation sections, each following the exact same functionality.  From my experience, this points to a good use case of a sightly template, with passed in values for the linked list, as well as the section title and URL.  Lets take a look at the relevant markup:
+```html
+<li class="nav-item">
+    <a href="#" class="nav-link dropdown-toggle" id="servicesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Services
+    </a>
+    <div class="dropdown-menu mega-menu" aria-labelledby="servicesMenu">
+        <div class="menu-title">
+            <a href="#">Services</a>
+        </div>
+        <div class="menu-block">
+            <ul class="list-unstyled">
+                <li class="mega-menu-item"><a href="">Adobe</a></li>
+                <li class="mega-menu-item"><a href="">Cloudera</a></li>
+                ...
+                <li class="mega-menu-item"><a href="">TIBCO</a></li>
+            </ul>
+        </div>
+    </div>
+</li>
+```
+Well, that's a mouthful, but if we break it down, each of the five navigation sections are added in as a ```<li class='nav-item'>``` element, with their sub-links as a secondary list.  This behavior is consistent across all five sections - excellent news!  We will be able to reuse the same code for each of the five sections.  Lets start by stripping out (cutting) the very first menu item and putting it into it's own file (pasting).  Create a new file named "navSection.html" with a copy of the services ```<li class='nav-item'>``` contents.  It should look like the following:
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/navSection.png "Templating at its finest!")
+Great.  Now let's add the AEM template tags around the whole file contents, similarly to the page component.  Add the following as the first line of the navSection.html file:
+```<template data-sly-template.navSection="${@ sectionTitle, sectionURL, sectionLinks}">```
+And the corresponding line as the last line of the file:```</template>```.  As always, ensure you follow proper indenting best practices.
+
+You'll notice I added the ```${@ sectionTitle, sectionURL, sectionLinks}``` in the opening tag.  This is telling AEM that we will be passing in variables for each of the sectionTitle, sectionURL and sectionLinks items.  For now, let's just ensure we can include the same markup without a visual difference.  As we cut/paste the "Services" section, from the place you cut out that content (Approx. line 28 of header.html, add the include of this template: ```<li data-sly-use.templ="navSection.html" data-sly-call="${templ.navSection}" data-sly-unwrap></li>```
+
+Upon building and refreshing the page, again you should not see any difference.  Let's now add the "Navigation 1" tab to our WCMUse class.  Open PDHeader.java and add variables for each of the navigation 1 items:
+* section1Label
+* section1URL
+* nav1Items
+
+Like the logo elements, let's include static variables for the property names and default values in addition to the property variables.  In this case we're not going to set a default for nav1Items, but the section1Label and url match the existing source of "Services" and "#".  The end result should be as follows:
+![alt text](https://github.com/PRFTAdobe/AEMTraining/blob/Create-Perficient-Digital-Header/assets/navigation1Java.png "More setters and getters!")
+
+You may notice that for the variable holding nav1Items, we're using a Map object.  This is due to the way that ACS Commons Composite Multifield works.  It stores the property information in JSON form (based on our implementation), and then includes a utility method to convert said JSON into a standard list (of HashMaps).  Now since both a list and map are readable in sightly, we can use that object directly!  First, add the setters for the section1Label and section1URL using the static defaults and property names above.  For the nav1Items object, however, use the ACSCommons ```MultiFieldPanelFunctions.getMultiFieldPanelValues``` method, as mentioned above.  This will result in the following:
+```java
+setSection1Label(properties.get(NAV_1_LABEL_PROP,DEFAULT_NAV1_LABEL));
+setSection1URL(properties.get(NAV_1_URL_PROP,DEFAULT_NAV1_URL));
+setNav1Items(MultiFieldPanelFunctions.getMultiFieldPanelValues(getResource(),NAV_1_ITEMS_PROP));
+```
