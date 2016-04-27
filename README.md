@@ -1,5 +1,6 @@
 # Create the Perficient Digital Header
-    
+**_Note:_** See Create-Perficient-Digital-Header-P1-Complete or Create-Perficient-Digital-Header-P2-Complete for a reference solution in case you get stuck.  Try not to reference these branches unless absolutely needed.
+
 ## Overview
 * Creating a static header
 * Making the editor authorable
@@ -226,5 +227,6 @@ You'll notice taht we used ```data-sly-list.link``` as opposed to just ```data-s
     </ul>
 ```
 
-_Exercise:_ Use what you've learned above to hook up the Navigation 2,3,4,5 tabs to utilize the same template.
-_Bonus:_ We also did not set up the right-most links (Utility links).  Use your knowledge of a data-sly-list, and the ACS Multifield Utility class to configure this.
+**_Exercise:_** Use what you've learned above to hook up the Navigation 2,3,4,5 tabs to utilize the same template.
+
+**_Bonus:_** We also did not set up the right-most links (Utility links).  Use your knowledge of a data-sly-list, and the ACS Multifield Utility class to configure this.
