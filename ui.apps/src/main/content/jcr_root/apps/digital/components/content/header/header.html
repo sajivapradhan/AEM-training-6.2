@@ -1,0 +1,65 @@
+<header role="banner" data-sly-use.header="com.perficient.adobe.digital.core.sightly.components.PHeader">
+    <div class="search-icon" id="search-trigger-overlay">
+        <span></span>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="hidden-md-up mobile-logo">
+                <a href="${header.logoUrl}">
+                    <img src="${header.logoPath}" alt="${header.logoAltText}"></a>
+            </div>
+            <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#mobilenav">
+                <div class="menu-icon">
+                    <div class="center-bar"></div>
+                </div>
+            </button>
+            <nav class="navbar navbar-full">
+                <div class="collapse navbar-toggleable-sm" id="mobilenav">
+
+                    <div class="nav-block">
+                        <div class="main-nav">
+                            <ul>
+                                <li class="nav-item hidden-sm-down">
+                                    <a href="${header.logoUrl}" class="logo">
+
+                                        <img src="${header.logoPath}" alt="${header.logoAltText}">
+                                    </a>
+                                </li>
+                                <li data-sly-use.templ="navSection.html"
+                                    data-sly-call="${templ.navSection @ sectionLabel=header.section1Label,
+                                    sectionURL=header.section1URL, sectionLinks=header.nav1Items}" data-sly-unwrap>
+                                </li>
+                                <li data-sly-use.templ="navSection.html"
+                                    data-sly-call="${templ.navSection @ sectionLabel=header.section2Label,
+                                    sectionURL=header.section2URL, sectionLinks=header.nav2Items}" data-sly-unwrap>
+                                </li>
+                                <li data-sly-use.templ="navSection.html"
+                                    data-sly-call="${templ.navSection @ sectionLabel=header.section3Label,
+                                    sectionURL=header.section3URL, sectionLinks=header.nav3Items}" data-sly-unwrap>
+                                </li>
+                                <li data-sly-use.templ="navSection.html"
+                                    data-sly-call="${templ.navSection @ sectionLabel=header.section4Label,
+                                    sectionURL=header.section4URL, sectionLinks=header.nav4Items}" data-sly-unwrap>
+                                </li>
+                                <li data-sly-use.templ="navSection.html"
+                                    data-sly-call="${templ.navSection @ sectionLabel=header.section5Label,
+                                    sectionURL=header.section5URL, sectionLinks=header.nav5Items}" data-sly-unwrap>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="utility-nav">
+                            <ul data-sly-list.link="${header.utilityNavItems}">
+                                <li>
+                                    <a href="${link.url}">${link.label}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+        </div>
+    </div>
+</header>

@@ -1,8 +1,9 @@
 package com.perficient.adobe.digital.core.sightly;
 
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 import com.adobe.cq.sightly.WCMUse;
+import com.adobe.cq.sightly.WCMUsePojo;
 import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
 
@@ -10,7 +11,7 @@ import com.day.cq.wcm.api.Page;
 /**
  * The Class PageHelper.
  */
-public class PageHelper extends WCMUse {
+public class PageHelper extends WCMUsePojo {
 
 	/** The current page. */
 	private Page currentPage;
@@ -31,7 +32,7 @@ public class PageHelper extends WCMUse {
 	 * @return the description
 	 */
 	public String getDescription() {
-		return getPageProperties().get("jcr:description", StringUtils.EMPTY);
+		return getPageProperties().get("jcr:description", "");
 	}
 
 	/**
@@ -39,22 +40,22 @@ public class PageHelper extends WCMUse {
 	 *
 	 * @return the keywords
 	 */
-	public String getKeywords() {
-
-		StringBuilder tags = new StringBuilder();
-		Tag[] tagArray = currentPage.getTags();
-
-		if (tagArray != null && tagArray.length > 0) {
-			for (Tag tag : tagArray) {
-				if (tag != null) {
-					tags.append(tag.getTitle());
-					tags.append(", ");
-				}
-			}
-		}
-
-		return StringUtils.removeEnd(tags.toString(), ", ");
-	}
+//	public String getKeywords() {
+//
+//		StringBuilder tags = new StringBuilder();
+//		Tag[] tagArray = currentPage.getTags();
+//
+//		if (tagArray != null && tagArray.length > 0) {
+//			for (Tag tag : tagArray) {
+//				if (tag != null) {
+//					tags.append(tag.getTitle());
+//					tags.append(", ");
+//				}
+//			}
+//		}
+//
+//		return StringUtils.removeEnd(tags.toString(), ", ");
+//	}
 
 	/**
 	 * Gets the page title.
@@ -63,10 +64,10 @@ public class PageHelper extends WCMUse {
 	 */
 	public String getPageTitle() {
 		String pageTitle = currentPage.getName();
-		if (StringUtils.isNotEmpty(currentPage.getTitle())) {
+		if (currentPage.getTitle() != null) {
 			pageTitle = currentPage.getTitle();
 		}
-		if (StringUtils.isNotEmpty(currentPage.getPageTitle())) {
+		if (currentPage.getPageTitle() != null) {
 			pageTitle = currentPage.getPageTitle();
 		}
 		return pageTitle;

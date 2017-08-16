@@ -1,0 +1,30 @@
+<div>
+    <button onclick="show()">List Children</button>
+
+    <ul id="pages"></ul>
+
+    <script>
+        function show() {
+
+        $.ajax({
+         type: 'GET',
+         url:'/content/digital/en.data.html',
+
+         success: function(data) {
+            var data2 = data.replace(/(<!--.*)/g, '');
+            var json = $.parseJSON(data2);
+            console.log(json);
+
+            json.forEach(function(item) {
+                $("#pages").append('<li><a href=' + item.link + '>' + item.name + '</a></li>');
+            });
+
+         },
+         error: function(error) {
+            alert(error);
+         }
+        });
+     }
+
+    </script>
+</div>
