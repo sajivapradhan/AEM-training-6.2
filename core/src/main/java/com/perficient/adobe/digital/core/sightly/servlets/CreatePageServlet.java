@@ -32,13 +32,14 @@ public class CreatePageServlet extends SlingAllMethodsServlet {
 
         String name = request.getParameter("name");
         String title = request.getParameter("title");
+        String parentPath = request.getParameter("page");
         System.out.println("name: " + name + " " + title);
 
+
+
         PageManager pageManager = request.getResource().getResourceResolver().adaptTo(PageManager.class);
-        Page page = request.getResource().adaptTo(Page.class);
-        System.out.println("Page: " + page);
-        Page currentPage = pageManager.getPage("/content/digital/en");
-        String parentPath = currentPage.getPath();
+        Page currentPage = pageManager.getPage(parentPath);
+//        String parentPath = currentPage.getPath();
         String template = currentPage.getTemplate().getPath();
         JSONObject jsonObject = new JSONObject();
 

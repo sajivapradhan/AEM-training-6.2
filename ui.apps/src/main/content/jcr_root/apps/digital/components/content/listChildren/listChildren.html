@@ -6,9 +6,11 @@
     <script>
         function show() {
 
+        var url = window.location.href.replace(".html",".data.html");
+
         $.ajax({
          type: 'GET',
-         url:'/content/digital/en.data.html',
+         url: url,
 
          success: function(data) {
             var data2 = data.replace(/(<!--.*)/g, '');

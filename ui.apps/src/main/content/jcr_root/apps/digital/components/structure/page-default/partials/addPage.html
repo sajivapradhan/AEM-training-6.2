@@ -2,6 +2,7 @@
     <form id="myform" onsubmit="return createPage()" enctype="multipart/form-data">
         <input name="name" id="name">
         <input name="title" id="title">
+        <input type="hidden" name="page" value="${currentPage.path}">
         <input type="submit" value="Create Page">
     </form>
 
@@ -12,12 +13,13 @@
 
         var name = $('#myform').find('input[name="name"]').val();
         var title = $('#myform').find('input[name="title"]').val();
+        var currentPage = $('#myform').find('input[name="page"]').val();
 
         $.ajax({
          type: 'POST',
          url:'/bin/myPostServlet',
          dataType: 'JSON',
-         data:{"name":name, "title":title},
+         data:{"name":name, "title":title, "page":currentPage},
          success: function(data) {
             console.log(data);
             $("#pages").append('<li><a href=' + data.path + '>' + data.title + '</a></li>');
