@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@SlingServlet(paths="/bin/myPostServlet", methods = "POST", metatype=true)
+@SlingServlet(paths="/bin/myPostServlet", methods = "POST")
 public class CreatePageServlet extends SlingAllMethodsServlet {
     private static final Logger LOGGER = Logger.getLogger( CreatePageServlet.class.getName() );
 
@@ -35,6 +35,8 @@ public class CreatePageServlet extends SlingAllMethodsServlet {
         System.out.println("name: " + name + " " + title);
 
         PageManager pageManager = request.getResource().getResourceResolver().adaptTo(PageManager.class);
+        Page page = request.getResource().adaptTo(Page.class);
+        System.out.println("Page: " + page);
         Page currentPage = pageManager.getPage("/content/digital/en");
         String parentPath = currentPage.getPath();
         String template = currentPage.getTemplate().getPath();
