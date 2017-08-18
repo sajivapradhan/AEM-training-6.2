@@ -86,7 +86,7 @@
                                     tag="h1"/>
                             </formats>
                         </paraformat>
-                        <supersubscript
+                        <subsuperscript
                             jcr:primaryType="nt:unstructured"
                             features="*"/>
                     </rtePlugins>
@@ -98,7 +98,7 @@
                                 <popovers jcr:primaryType="nt:unstructured">
                                     <format
                                         jcr:primaryType="nt:unstructured"
-                                        items="[format#bold,format#italic,format#underline,subsuperscript#subscript,subsuperscript#superscript]"
+                                        items="[format#bold,format#italic,format#underline]"
                                         ref="format"/>
                                     <justify
                                         jcr:primaryType="nt:unstructured"
@@ -108,10 +108,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
                                         ref="lists"/>
-                                    <styles
-                                        jcr:primaryType="nt:unstructured"
-                                        items="styles:getStyles:styles-pulldown"
-                                        ref="styles"/>
                                     <paraformat
                                         jcr:primaryType="nt:unstructured"
                                         items="paraformat:getFormats:paraformat-pulldown"
@@ -122,10 +118,6 @@
                                 jcr:primaryType="nt:unstructured"
                                 toolbar="[format#bold,format#italic,format#underline,subsuperscript#subscript,subsuperscript#superscript,#paraformat,-,links#modifylink,links#unlink,links#anchor,tracklinks#modifylinktracking,-,justify#justifyleft,justify#justifycenter,justify#justifyright,-,lists#unordered,lists#ordered,lists#outdent,lists#indent,-,fullscreen#finish]">
                                 <popovers jcr:primaryType="nt:unstructured">
-                                    <styles
-                                        jcr:primaryType="nt:unstructured"
-                                        items="styles:getStyles:styles-pulldown"
-                                        ref="styles"/>
                                     <paraformat
                                         jcr:primaryType="nt:unstructured"
                                         items="paraformat:getFormats:paraformat-pulldown"

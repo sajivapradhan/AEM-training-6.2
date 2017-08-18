@@ -17,6 +17,7 @@
             var json = $.parseJSON(data2);
             console.log(json);
 
+            $("#pages").empty();
             json.forEach(function(item) {
                 $("#pages").append('<li><a href=' + item.link + '>' + item.name + '</a></li>');
             });

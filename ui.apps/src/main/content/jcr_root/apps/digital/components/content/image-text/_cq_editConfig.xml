@@ -29,11 +29,11 @@
                 jcr:primaryType="cq:ChildEditorConfig"
                 title="Text"
                 type="text"/>
-            <image
-                jcr:primaryType="cq:ChildEditorConfig"
-                active="{Boolean}true"
-                title="Image"
-                type="image"/>
+            <!--<image-->
+                <!--jcr:primaryType="cq:ChildEditorConfig"-->
+                <!--active="{Boolean}true"-->
+                <!--title="Image"-->
+                <!--type="image"/>-->
         </cq:childEditors>
     </cq:inplaceEditing>
 </jcr:root>

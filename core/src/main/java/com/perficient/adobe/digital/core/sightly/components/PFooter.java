@@ -1,11 +1,11 @@
 package com.perficient.adobe.digital.core.sightly.components;
 
-import com.adobe.cq.sightly.WCMUse;
+import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.sling.api.resource.ValueMap;
 
 import java.util.Calendar;
 
-public class PFooter extends WCMUse {
+public class PFooter extends WCMUsePojo {
 
     private String logoUrl;
     private String logoPath;

@@ -14,32 +14,24 @@ import org.apache.sling.commons.json.JSONObject;
 import javax.jcr.Repository;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @SlingServlet(paths="/bin/myPostServlet", methods = "POST")
 public class CreatePageServlet extends SlingAllMethodsServlet {
-    private static final Logger LOGGER = Logger.getLogger( CreatePageServlet.class.getName() );
 
     @Reference
     private Repository repository;
 
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-
-        LOGGER.log( Level.FINE, "Start logging");
         response.setHeader("Content-Type", "application/json");
 
         String name = request.getParameter("name");
         String title = request.getParameter("title");
         String parentPath = request.getParameter("page");
-        System.out.println("name: " + name + " " + title);
-
-
+//        System.out.println("name: " + name + " " + title);
 
         PageManager pageManager = request.getResource().getResourceResolver().adaptTo(PageManager.class);
         Page currentPage = pageManager.getPage(parentPath);
-//        String parentPath = currentPage.getPath();
         String template = currentPage.getTemplate().getPath();
         JSONObject jsonObject = new JSONObject();
 

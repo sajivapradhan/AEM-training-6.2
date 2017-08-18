@@ -1,12 +1,14 @@
 <div>
     <form id="myform" onsubmit="return createPage()" enctype="multipart/form-data">
+        <label>Name:</label>
         <input name="name" id="name">
+        <label>Title:</label>
         <input name="title" id="title">
         <input type="hidden" name="page" value="${currentPage.path}">
         <input type="submit" value="Create Page">
     </form>
 
-    <ul id="pages"></ul>
+    <!--/* <ul id="pages"></ul> */-->
 
     <script>
         function createPage() {

@@ -208,16 +208,6 @@
                                             hiddenHeaderClassName="cq-wcm-foundation-aria-visuallyhidden"
                                             hiddenHeaderEditingCSS="coral-RichText-hiddenHeader--editing"/>
                                     </table>
-                                    <styles
-                                        jcr:primaryType="nt:unstructured"
-                                        features="*">
-                                        <styles jcr:primaryType="cq:WidgetCollection">
-                                            <style1
-                                                jcr:primaryType="nt:unstructured"
-                                                cssName="[text-uppercase]"
-                                                text="Uppercase"/>
-                                        </styles>
-                                    </styles>
                                     <subsuperscript
                                         jcr:primaryType="nt:unstructured"
                                         features="*"/>
@@ -229,7 +219,7 @@
                                     <cui jcr:primaryType="nt:unstructured">
                                         <inline
                                             jcr:primaryType="nt:unstructured"
-                                            toolbar="[format#bold,format#italic,format#underline,#paraformat,image#imageProps,#justify,#lists,links#modifylink,links#unlink,#styles,#misctools]">
+                                            toolbar="[format#bold,format#italic,format#underline,#paraformat,image#imageProps,#justify,#lists,links#modifylink,links#unlink,#misctools]">
                                             <popovers jcr:primaryType="nt:unstructured">
                                                 <justify
                                                     jcr:primaryType="nt:unstructured"
@@ -243,10 +233,10 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     items="paraformat:getFormats:paraformat-pulldown"
                                                     ref="paraformat"/>
-                                                <styles
-                                                    jcr:primaryType="nt:unstructured"
-                                                    items="styles:getStyles:styles-pulldown"
-                                                    ref="styles"/>
+                                                <!--<subsuperscript-->
+                                                    <!--jcr:primaryType="nt:unstructured"-->
+                                                    <!--items="[subsuperscript#subscript,subsuperscript#superscript]"-->
+                                                    <!--ref="subsuperscript"/>-->
                                             </popovers>
                                         </inline>
                                     </cui>

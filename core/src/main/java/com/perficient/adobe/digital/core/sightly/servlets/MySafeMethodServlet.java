@@ -52,7 +52,7 @@ public class MySafeMethodServlet extends SlingSafeMethodsServlet {
 
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("name", childPage.getName());
+                    jsonObject.put("name", childPage.getTitle());
                     jsonObject.put("link", childPage.getPath() + ".html");
 
                     jsonArray.put(jsonObject);

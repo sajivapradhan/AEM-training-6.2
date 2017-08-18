@@ -1,11 +1,12 @@
 package com.perficient.adobe.digital.core.sightly.components;
 
 import com.adobe.cq.sightly.WCMUse;
+import com.adobe.cq.sightly.WCMUsePojo;
 import com.day.cq.wcm.foundation.Image;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 
-public class ImageText extends WCMUse {
+public class ImageText extends WCMUsePojo {
 
     private String text;
     private String imagePath;

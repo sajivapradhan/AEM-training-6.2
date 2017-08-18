@@ -433,7 +433,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.5.11</version>
+                <version>1.7.6</version>
                 <scope>provided</scope>
             </dependency>
             <!-- Apache Sling Dependencies -->
@@ -535,7 +535,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.5.2</version>
+                <version>1.7.6</version>
             </dependency>
             <!-- slice -->
             <dependency>
@@ -611,6 +611,15 @@
                 <artifactId>acs-aem-commons-bundle-twitter</artifactId>
                 <version>2.5.0</version>
             </dependency>
+
+            <!-- Apache Sling Scheduler -->
+            <dependency>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>org.apache.sling.commons.scheduler</artifactId>
+                <version>2.6.2</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

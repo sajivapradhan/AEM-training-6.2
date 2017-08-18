@@ -1,13 +1,13 @@
 package com.perficient.adobe.digital.core.sightly.components;
 
 import com.adobe.acs.commons.widgets.MultiFieldPanelFunctions;
-import com.adobe.cq.sightly.WCMUse;
+import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.sling.api.resource.ValueMap;
 
 import java.util.List;
 import java.util.Map;
 
-public class PHeader extends WCMUse {
+public class PHeader extends WCMUsePojo {
 
     private String logoUrl;
     private String logoPath;

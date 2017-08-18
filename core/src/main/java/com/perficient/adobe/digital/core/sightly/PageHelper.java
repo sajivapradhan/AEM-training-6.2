@@ -2,9 +2,7 @@ package com.perficient.adobe.digital.core.sightly;
 
 //import org.apache.commons.lang3.StringUtils;
 
-import com.adobe.cq.sightly.WCMUse;
 import com.adobe.cq.sightly.WCMUsePojo;
-import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
 
 // TODO: Auto-generated Javadoc
@@ -35,11 +33,11 @@ public class PageHelper extends WCMUsePojo {
 		return getPageProperties().get("jcr:description", "");
 	}
 
-	/**
-	 * Gets the keywords.
-	 *
-	 * @return the keywords
-	 */
+//	/**
+//	 * Gets the keywords.
+//	 *
+//	 * @return the keywords
+//	 */
 //	public String getKeywords() {
 //
 //		StringBuilder tags = new StringBuilder();
