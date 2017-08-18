@@ -56,7 +56,7 @@
                         	*
                        	</Import-Package>
                         <Sling-Model-Packages>
-                            com.perficient.adobe.digital.core
+                            com.perficient.adobe.digital.core.sightly.models
                         </Sling-Model-Packages>
                     </instructions>
                 </configuration>
