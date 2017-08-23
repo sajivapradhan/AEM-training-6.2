@@ -29,7 +29,7 @@ public class HelloWorldScheduledService {
 
     protected void activate(ComponentContext componentContext) throws Exception {
         //case 1: with addJob() method: executes the job every minute
-        String schedulingExpression = "0 * * * * ?";
+        String schedulingExpression = "0/15 * * * * ?";
         String jobName1 = "case1";
         Map<String, Serializable> config1 = new HashMap<String, Serializable>();
         boolean canRunConcurrently = true;
@@ -41,12 +41,12 @@ public class HelloWorldScheduledService {
         try {
             this.scheduler.addJob(jobName1, job1, config1, schedulingExpression, canRunConcurrently);
         } catch (Exception e) {
-//            job1.run();
+            job1.run();
         }
 
         //case 2: with addPeriodicJob(): executes the job every 3 minutes
         String jobName2 = "case2";
-        long period = 180;
+        long period = 35;
         Map<String, Serializable> config2 = new HashMap<String, Serializable>();
         final Runnable job2 = new Runnable() {
             public void run() {
@@ -56,10 +56,10 @@ public class HelloWorldScheduledService {
         try {
             this.scheduler.addPeriodicJob(jobName2, job2, config2, period, canRunConcurrently);
         } catch (Exception e) {
-//            job2.run();
+            job2.run();
         }
 
-        //case 3: with fireJobAt(): executes the job at a specific date (date of deployment + delay of 30 seconds)
+        //case 3: with fireJobAt(): executes the job at a specific date (date of deployment + delay of 60 seconds)
         String jobName3 = "case3";
         final long delay = 60*1000;
         final Date fireDate = new Date();
@@ -73,7 +73,7 @@ public class HelloWorldScheduledService {
         try {
             this.scheduler.fireJobAt(jobName3, job3, config3, fireDate);
         } catch (Exception e) {
-//            job3.run();
+            job3.run();
         }
     }
 

@@ -58,6 +58,7 @@
                         <Sling-Model-Packages>
                             com.perficient.adobe.digital.core.sightly.models
                         </Sling-Model-Packages>
+                        <Bundle-Activator>com.perficient.adobe.digital.core.sightly.Activator</Bundle-Activator>
                     </instructions>
                 </configuration>
             </plugin>

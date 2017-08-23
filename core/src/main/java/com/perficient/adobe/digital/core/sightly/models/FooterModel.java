@@ -1,5 +1,6 @@
 package com.perficient.adobe.digital.core.sightly.models;
 
+import org.apache.felix.scr.annotations.Component;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Calendar;
 
+@Component
 @Model(adaptables = Resource.class,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterModel {
@@ -89,4 +91,5 @@ public class FooterModel {
     public String getSlogan() {
         return slogan;
     }
+
 }

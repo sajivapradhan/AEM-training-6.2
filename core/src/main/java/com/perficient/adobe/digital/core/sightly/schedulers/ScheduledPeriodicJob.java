@@ -8,14 +8,14 @@ import org.apache.felix.scr.annotations.Property;
 
 @Component
 @Service(value = Runnable.class)
-@Property( name = "scheduler.period", longValue = 10) //the period is expressed in seconds
+@Property( name = "scheduler.period", longValue = 25) //the period is expressed in seconds
 public class ScheduledPeriodicJob implements Runnable {
 
     /** Default log. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     public void run() {
-//        log.info("Executing a perodic job (job#2) through the whiteboard pattern");
+        log.info("Executing a perodic job (job#2) through the whiteboard pattern");
     }
 
 }

@@ -6,7 +6,7 @@ import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.Property;
 
-@Component(immediate = true, metatype = true, label = "Digital Syncup Base Task")
+@Component(immediate = true, metatype = true, label = "Digital Scheduled Chron Job")
 @Service(value = Runnable.class)
 @Property( name = "scheduler.expression", value = "0/10 * * * * ?")
 public class ScheduledCronJob implements Runnable {
@@ -16,7 +16,7 @@ public class ScheduledCronJob implements Runnable {
 
 
     public void run() {
-//        log.info("Executing a cron job (job#1) through the whiteboard pattern");
+        log.info("Executing a cron job (job#1) through the whiteboard pattern");
     }
 
 }
