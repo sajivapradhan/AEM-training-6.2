@@ -1,0 +1,32 @@
+<div data-sly-use.carousel="com.perficient.adobe.digital.core.sightly.models.Carousel">
+    <div data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+    <sly data-sly-call="${clientlib.js @ categories='jquerysamples'}"/>
+    <sly data-sly-call="${clientlib.css @ categories='jquerysamples'}"/>
+
+    <div id="inputs">
+        <input type="hidden" name="playSpeed" value=${carousel.playSpeed}>
+        <input type="hidden" name="transTime" value=${carousel.transTime}>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            var playSpeed = parseInt($('#inputs').find('input[name="playSpeed"]').val());
+            var transTime = parseInt($('#inputs').find('input[name="transTime"]').val());
+            console.log("Play speed: " + playSpeed + " Trans time: " + transTime);
+
+            $('#carousel').infiniteCarousel({
+                displayTime: playSpeed,
+                transitionSpeed : transTime,
+                textholderHeight : .25
+            });
+        });
+    </script>
+
+    <div id="carousel">
+        <!--/* <h3>Carousel component</h3> */-->
+        <ul data-sly-list.images="${carousel.images}">
+            <li><img alt="" src="${images.asset}" width="500" height="213"></li>
+        </ul>
+    </div>
+
+</div>

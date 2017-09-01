@@ -1,10 +1,11 @@
 <template data-sly-template.content="${@ pageTitle}">
-	<p>
-		Welcome to the "${pageTitle}" page!
-	</p>
+
 	<section data-sly-include="partials/addPage.html"></section>
 
 	<div data-sly-resource="${'listChildren' @ resourceType='digital/components/content/listChildren'}"></div>
+	<p>
+		Welcome to the "${pageTitle}" page!
+	</p>
 
 	<div class="content_main grid_12" data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></div>
 

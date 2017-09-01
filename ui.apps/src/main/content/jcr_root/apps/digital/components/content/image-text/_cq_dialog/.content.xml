@@ -33,7 +33,7 @@
                     </column>
                 </items>
             </componentstyles>
-            <image
+            <image1
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Image Properties"
                 sling:resourceType="granite/ui/components/foundation/section">
@@ -52,10 +52,10 @@
                                 autoStart="{Boolean}false"
                                 class="cq-droptarget"
                                 fieldLabel="Image asset"
-                                fileNameParameter="./image/fileName"
+                                fileNameParameter="./image1/fileName"
                                 mimeTypes="[image]"
                                 multiple="{Boolean}false"
-                                name="./image/file"
+                                name="./image1/file"
                                 title="Upload Image Asset"
                                 uploadUrl="${suffix.path}"
                                 useHTML5="{Boolean}true"/>
@@ -63,19 +63,25 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
                                 fieldLabel="Title"
-                                name="./image/jcr:title"/>
+                                name="./image1/jcr:title"/>
+                            <alt
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                    fieldDescription="(leave empty to use the title defined above)"
+                                    fieldLabel="Alt Text"
+                                    name="./image1/alt"/>
                             <linkURL
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link to"
-                                name="./image/linkURL"
+                                name="./image1/linkURL"
                                 rootPath="/content"/>
                             <alignment
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/foundation/form/select"
                                 fieldDescription="Image alignment position"
                                 fieldLabel="Alignment"
-                                name="./alignment">
+                                name="./image1/alignment">
                                 <items jcr:primaryType="nt:unstructured">
                                     <left
                                         jcr:primaryType="nt:unstructured"
@@ -99,57 +105,92 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/numberfield"
                                     emptyText="Width"
-                                    name="./image/width"/>
+                                    name="./image1/width"/>
                                 <height
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/numberfield"
                                     emptyText="Height"
-                                    name="./image/height"/>
+                                    name="./image1/height"/>
                             </size>
                             <resType
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/foundation/form/hidden"
-                                name="./image/sling:resourceType"
+                                name="./image1/sling:resourceType"
                                 value="foundation/components/image"/>
                         </items>
                     </column>
                 </items>
-            </image>
-            <accessibility
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Accessibility"
-                sling:resourceType="granite/ui/components/foundation/section">
-                <layout
+            </image1>
+            <image2
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
-                    margin="{Boolean}false"/>
+                    jcr:title="Image 2"
+                    sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                        margin="{Boolean}false"/>
                 <items jcr:primaryType="nt:unstructured">
                     <column
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/container">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <alt
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                fieldDescription="Provide a textual alternative of the content and function of the image."
-                                fieldLabel="Image Alternative Text"
-                                name="./image/alt"/>
-                            <decorative
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                                fieldDescription="Check if the image should be ignored by assistive technology. This applies to decorative images only."
-                                name="./image/isDecorative"
-                                text="Image is decorative"
-                                value="true"/>
-                            <deleteIsDecorative
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/hidden"
-                                name="./image/isDecorative@Delete"
-                                value="true"/>
+                            <file
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/fileupload"
+                                    autoStart="{Boolean}false"
+                                    class="cq-droptarget"
+                                    fieldLabel="Image asset"
+                                    fileNameParameter="./image2/fileName"
+                                    mimeTypes="[image]"
+                                    multiple="{Boolean}false"
+                                    name="./image2/file"
+                                    title="Upload Image Asset"
+                                    uploadUrl="${suffix.path}"
+                                    useHTML5="{Boolean}true"/>
+                            <resType
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/hidden"
+                                    name="./image2/sling:resourceType"
+                                    value="foundation/components/image"/>
                         </items>
                     </column>
                 </items>
-            </accessibility>
+            </image2>
+            <image3
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Image 3"
+                    sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                        margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <file
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/fileupload"
+                                    autoStart="{Boolean}false"
+                                    class="cq-droptarget"
+                                    fieldLabel="Image asset"
+                                    fileNameParameter="./image3/fileName"
+                                    mimeTypes="[image]"
+                                    multiple="{Boolean}false"
+                                    name="./image3/file"
+                                    title="Upload Image Asset"
+                                    uploadUrl="${suffix.path}"
+                                    useHTML5="{Boolean}true"/>
+                            <resType
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/hidden"
+                                    name="./image3/sling:resourceType"
+                                    value="foundation/components/image"/>
+                        </items>
+                    </column>
+                </items>
+            </image3>
             <texttab
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Text"

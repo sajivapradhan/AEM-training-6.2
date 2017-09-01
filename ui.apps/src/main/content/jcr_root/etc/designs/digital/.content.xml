@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
+    <clientlibs/>
+    <fonts/>
+    <img/>
     <jcr:content
+        cq:lastModified="{Date}2017-08-31T15:19:26.611-05:00"
+        cq:lastModifiedBy="admin"
         jcr:primaryType="nt:unstructured"
         jcr:title="Perficient Digital Design"
-        sling:resourceType="wcm/core/components/designer"/>
-    <clientlib/>
+        sling:resourceType="wcm/core/components/designer">
+        <page-default jcr:primaryType="nt:unstructured">
+            <content
+                jcr:lastModified="{Date}2017-08-30T17:47:01.985-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                components="/apps/digital/components/general/colctrl">
+                <section jcr:primaryType="nt:unstructured"/>
+            </content>
+            <breadcrumb
+                jcr:lastModified="{Date}2017-08-31T15:19:26.610-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                relParent="0"/>
+        </page-default>
+    </jcr:content>
+    <_x002e_DS_Store/>
+    <formlistvalues/>
 </jcr:root>

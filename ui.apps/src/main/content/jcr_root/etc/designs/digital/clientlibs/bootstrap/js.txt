@@ -1,3 +1,0 @@
-#base=js
-tether.min.js
-bootstrap.min.js

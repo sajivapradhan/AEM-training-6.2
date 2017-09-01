@@ -24,7 +24,7 @@ public class PFooter extends WCMUsePojo {
 
     //Component Property Defaults
     public static String DEFAULT_LOGO_IMAGE = "/etc/designs/digital/img/perficient-logo-grey.png";
-    public static String DEFAULT_LOGO_IMAGE_URL = "http://www.perficient.com/services/perficient-digital";
+    public static String DEFAULT_LOGO_IMAGE_URL = "";
     public static String DEFAULT_LOGO_ALT_TEXT = "Perficient, Inc";
     public static String DEFAULT_PRIVACY_POLICY_TEXT = "Privacy Policy";
     public static String DEFAULT_PRIVACY_POLICY_URL = "http://www.perficient.com";
